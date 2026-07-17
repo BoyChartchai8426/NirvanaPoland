@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Nirvana Thai Massage Day Spa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --brown-deep:#4f1a05;
+    --brown:#7a2a0a;
+    --brown-soft:#8c3a16;
+    --brown-rule:#a85a2e;
+    --gold:#d2a14e;
+    --gold-bright:#ecc879;
+    --gold-deep:#a9772d;
+    --cream:#f4e7cd;
+    --cream-dim:rgba(244,231,205,.80);
+    --cream-faint:rgba(244,231,205,.55);
+    --maxw:1280px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--brown);
+    color:var(--cream);
+    font-family:"EB Garamond",Georgia,serif;
+    font-size:18px;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{display:block;max-width:100%;}
+
+  /* ---------- Header ---------- */
+  .topbar{
+    position:relative;
+    background:
+      radial-gradient(120% 140% at 50% -10%, #93431b 0%, var(--brown) 46%, var(--brown-deep) 130%);
+    padding:30px 24px 0;
+    z-index:20;
+  }
+  .brand{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:14px;
+  }
+  .brand-banner{
+    display:block;
+    width:100%;
+    text-align:center;
+    text-decoration:none;
+    line-height:0;
+  }
+  .brand-banner img{
+    display:inline-block;
+    width:auto;
+    max-width:min(460px,92%);
+    height:auto;
+    border-radius:12px;
+    box-shadow:0 8px 22px rgba(0,0,0,.38);
+    border:1px solid rgba(236,200,121,.45);
+  }
+  .brand-wordmark{ text-align:left; }
+  .brand-wordmark .w1{
+    font-family:"Cinzel","Cormorant Garamond",serif;
+    font-weight:700;
+    letter-spacing:.10em;
+    font-size:34px;
+    line-height:1.04;
+    color:var(--gold-bright);
+    text-shadow:0 2px 10px rgba(0,0,0,.35);
+  }
+  .brand-wordmark .w2{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:500;
+    font-style:italic;
+    letter-spacing:.18em;
+    font-size:18px;
+    color:var(--cream-dim);
+    margin-top:4px;
+  }
+
+  /* ---------- Nav ---------- */
+  .navwrap{
+    max-width:var(--maxw);
+    margin:26px auto 0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    position:relative;
+  }
+  nav.menu{
+    display:flex;
+    align-items:stretch;
+    gap:0;
+    background:rgba(244,231,205,.10);
+    border:1px solid rgba(244,231,205,.16);
+    border-radius:4px;
+    overflow:hidden;
+    backdrop-filter:blur(2px);
+  }
+  nav.menu a{
+    font-family:"Jost",sans-serif;
+    font-weight:400;
+    letter-spacing:.11em;
+    text-transform:uppercase;
+    font-size:13.5px;
+    color:var(--cream-dim);
+    text-decoration:none;
+    padding:15px 19px;
+    transition:background .25s ease,color .25s ease;
+    white-space:nowrap;
+    border-right:1px solid rgba(244,231,205,.12);
+  }
+  nav.menu a:last-child{border-right:none;}
+  nav.menu a:hover{ color:var(--cream); background:rgba(244,231,205,.07); }
+  nav.menu a.active{
+    background:linear-gradient(180deg,var(--gold-bright) 0%,var(--gold) 55%,var(--gold-deep) 100%);
+    color:#5a2208;
+    font-weight:600;
+    text-shadow:0 1px 0 rgba(255,255,255,.25);
+  }
+  .lang{
+    position:absolute;
+    right:0;
+    display:flex;
+    align-items:center;
+    gap:2px;
+    font-family:"Jost",sans-serif;
+    font-size:13px;
+    letter-spacing:.12em;
+  }
+  .lang button{
+    background:none;border:none;cursor:pointer;
+    color:var(--cream-faint);
+    font:inherit;
+    padding:6px 9px;
+    letter-spacing:.12em;
+    border-radius:3px;
+    transition:color .2s ease;
+  }
+  .lang button:hover{color:var(--cream);}
+  .lang button.on{ color:var(--gold-bright); font-weight:600; }
+  .lang .sep{ color:rgba(244,231,205,.3); }
+
+  .gold-rule{
+    height:3px;
+    margin-top:24px;
+    background:linear-gradient(90deg,
+      transparent 0%, var(--gold-deep) 8%, var(--gold-bright) 50%, var(--gold-deep) 92%, transparent 100%);
+    box-shadow:0 1px 6px rgba(236,200,121,.3);
+  }
+
+  /* sticky condensed header that appears on scroll */
+  .stickybar{
+    position:fixed;top:0;left:0;right:0;
+    z-index:40;
+    background:linear-gradient(180deg,var(--brown) 0%, #732809 100%);
+    border-bottom:2px solid var(--gold);
+    transform:translateY(-100%);
+    transition:transform .4s cubic-bezier(.22,.61,.36,1);
+    padding:0 24px;
+  }
+  .stickybar.show{ transform:translateY(0); }
+  .stickybar .inner{
+    max-width:var(--maxw);margin:0 auto;
+    display:flex;align-items:center;justify-content:space-between;
+    height:64px;gap:18px;
+  }
+  .stickybar .s-brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--gold-bright);}
+  .stickybar .s-brand img{width:42px;height:42px;}
+  .stickybar .s-brand span{font-family:"Cinzel","Cormorant Garamond",serif;font-weight:700;letter-spacing:.12em;font-size:17px;}
+  .stickybar nav.menu{background:rgba(244,231,205,.08);}
+  .stickybar nav.menu a{padding:11px 15px;font-size:12px;letter-spacing:.1em;}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    width:100%;
+    height:clamp(440px,64vh,720px);
+    overflow:hidden;
+    background:var(--brown-deep);
+  }
+  .hero .photo{
+    position:absolute;inset:0;
+    background:#2c1303 url('assets/hero-main.jpg') center 30%/cover no-repeat;
+  }
+  .ph-label{
+    text-align:center;
+    font-family:"Jost",monospace,sans-serif;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:rgba(244,231,205,.55);
+    font-size:13px;
+    line-height:2;
+    border:1px dashed rgba(244,231,205,.3);
+    padding:22px 34px;
+    border-radius:4px;
+    background:rgba(20,8,2,.25);
+  }
+  .ph-label b{display:block;color:rgba(236,200,121,.75);font-size:15px;letter-spacing:.26em;margin-bottom:6px;font-weight:600;}
+  .hero .veil{
+    position:absolute;inset:0;
+    background:linear-gradient(180deg, rgba(40,18,4,.15) 0%, rgba(40,18,4,0) 35%, rgba(40,18,4,.55) 100%);
+    pointer-events:none;
+  }
+  .hero .slogan{
+    position:absolute;
+    left:0;right:0;bottom:48px;
+    text-align:center;
+    z-index:3;
+  }
+  .hero .slogan .eyebrow{
+    font-family:"Jost",sans-serif;
+    letter-spacing:.42em;
+    text-transform:uppercase;
+    font-size:13px;
+    color:var(--gold-bright);
+    margin-bottom:12px;
+  }
+  .hero .slogan h2{
+    margin:0;
+    font-family:"Cormorant Garamond",serif;
+    font-weight:500;
+    font-style:italic;
+    font-size:clamp(30px,4vw,52px);
+    color:var(--cream);
+    text-shadow:0 4px 24px rgba(0,0,0,.6);
+  }
+  .hero .slogan .slogan-sub{
+    margin-top:14px;
+    font-family:"Jost",sans-serif;
+    font-weight:400;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    font-size:clamp(12px,1.5vw,16px);
+    color:var(--gold-bright);
+    text-shadow:0 2px 12px rgba(0,0,0,.55);
+  }
+  /* small kanok corner flourish on hero */
+  .hero .corner{position:absolute;width:120px;height:120px;opacity:.5;}
+  .hero .corner.tl{top:14px;left:14px;}
+  .hero .corner.tr{top:14px;right:14px;transform:scaleX(-1);}
+
+  /* ---------- About ---------- */
+  .about{
+    background:
+      radial-gradient(140% 90% at 80% 0%, #883718 0%, var(--brown) 50%, var(--brown-deep) 130%);
+    position:relative;
+  }
+  .about-grid{
+    max-width:var(--maxw);
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:minmax(280px,34%) 1fr;
+  }
+  .kanok-panel{
+    position:sticky;
+    top:0;
+    align-self:start;
+    height:100vh;
+    background:#3c1404 url('assets/panel-photo.jpg') center/cover no-repeat;
+    border-right:3px solid var(--gold);
+    overflow:hidden;
+  }
+  .kanok-panel::after{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:
+      radial-gradient(58% 40% at 50% 50%, rgba(40,16,4,.62) 0%, rgba(40,16,4,0) 72%),
+      linear-gradient(180deg, rgba(40,16,4,.5) 0%, rgba(40,16,4,.18) 45%, rgba(40,16,4,.55) 100%);
+  }
+  .kanok-medallion{
+    position:absolute;
+    top:50%;left:50%;
+    transform:translate(-50%,-50%);
+    width:min(64%,210px);
+    aspect-ratio:1;
+    border-radius:50%;
+    z-index:3;
+    background:radial-gradient(circle at 50% 42%, rgba(244,231,205,.06) 30%, rgba(60,20,4,.0) 62%);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .kanok-medallion img{width:84%;height:84%;object-fit:contain;filter:drop-shadow(0 6px 16px rgba(0,0,0,.5));}
+
+  .about-content{
+    padding:72px clamp(28px,5vw,84px) 88px;
+  }
+  .eyebrow{
+    font-family:"Jost",sans-serif;
+    letter-spacing:.4em;
+    text-transform:uppercase;
+    font-size:13px;
+    color:var(--gold-bright);
+    margin-bottom:14px;
+  }
+  .about-content h2{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(34px,4.4vw,52px);
+    line-height:1.08;
+    margin:0 0 10px;
+    color:var(--cream);
+  }
+  .about-content h2.about-title{ display:inline-block; }
+  .about-content h2.about-title .ds{ display:block; text-align:center; }
+  .title-rule{
+    width:120px;height:2px;
+    background:linear-gradient(90deg,var(--gold-bright),rgba(210,161,78,0));
+    margin-bottom:30px;
+  }
+  .about-content p{
+    margin:0 0 20px;
+    color:var(--cream-dim);
+    max-width:60ch;
+    text-wrap:pretty;
+  }
+  .naturanga-note{
+    position:relative;
+    max-width:60ch;
+    margin:0 0 30px;
+    padding:22px 26px 22px 28px;
+    background:linear-gradient(180deg, rgba(210,161,78,.14) 0%, rgba(210,161,78,.06) 100%);
+    border:1px solid rgba(236,200,121,.34);
+    border-left:4px solid var(--gold);
+    border-radius:4px;
+  }
+  .naturanga-note .nn-badge{
+    display:inline-block;
+    font-family:"Jost",sans-serif;
+    font-weight:600;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    font-size:12px;
+    color:#5a2208;
+    background:linear-gradient(180deg,var(--gold-bright) 0%,var(--gold) 60%,var(--gold-deep) 100%);
+    padding:5px 13px;
+    border-radius:3px;
+    margin-bottom:12px;
+    text-shadow:0 1px 0 rgba(255,255,255,.25);
+  }
+  .naturanga-note p{
+    margin:0 !important;
+    color:var(--cream) !important;
+    font-size:18px;
+    line-height:1.66;
+    max-width:none !important;
+  }
+  .about-content p.lead{
+    font-size:21px;
+    color:var(--cream);
+    font-style:italic;
+  }
+  .about-content .signature{
+    font-family:"Cormorant Garamond",serif;
+    font-style:italic;
+    font-weight:600;
+    font-size:clamp(24px,3vw,34px);
+    color:var(--gold-bright);
+    letter-spacing:.02em;
+    margin:30px 0 4px;
+  }
+
+  .section-divider{
+    display:flex;align-items:center;gap:18px;
+    margin:54px 0 30px;
+  }
+  .section-divider .line{flex:1;height:1px;background:rgba(210,161,78,.4);}
+  .section-divider .diamond{
+    width:10px;height:10px;background:var(--gold);transform:rotate(45deg);
+    box-shadow:0 0 0 4px rgba(210,161,78,.18);
+  }
+  h3.sub{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+    font-size:clamp(26px,3.2vw,38px);
+    color:var(--cream);
+    margin:0 0 6px;
+  }
+  .history-body{ column-gap:48px; }
+
+  /* ---------- Footer ---------- */
+  footer{
+    background:var(--brown-deep);
+    border-top:2px solid var(--gold-deep);
+    padding:40px 24px;
+    text-align:center;
+  }
+  footer .f-logo{width:56px;height:56px;margin:0 auto 14px;opacity:.95;}
+  footer .f-name{font-family:"Cinzel","Cormorant Garamond",serif;letter-spacing:.16em;color:var(--gold-bright);font-size:16px;}
+  footer .f-sub{font-family:"Jost",sans-serif;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--cream-faint);margin-top:8px;}
+
+  [data-i18n]{transition:opacity .18s ease;}
+
+  /* ---------- Mobile hamburger + menu ---------- */
+  .burger{
+    display:none;
+    flex-direction:column;justify-content:center;gap:5px;
+    width:48px;height:44px;padding:0 11px;
+    background:rgba(244,231,205,.10);
+    border:1px solid rgba(244,231,205,.22);
+    border-radius:9px;cursor:pointer;
+  }
+  .burger span{display:block;height:2.5px;width:100%;background:var(--gold-bright);border-radius:2px;}
+  .navwrap .burger{margin-top:4px;}
+  .mobile-nav{
+    position:fixed;inset:0;z-index:120;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;
+    background:linear-gradient(180deg,#5a1e07 0%, #3c1404 100%);
+    transform:translateY(-100%);
+    transition:transform .38s cubic-bezier(.22,.61,.36,1);
+    visibility:hidden;
+  }
+  .mobile-nav.open{transform:translateY(0);visibility:visible;}
+  .mobile-nav .m-logo{width:74px;height:74px;margin-bottom:18px;opacity:.95;}
+  .mobile-nav a.m-link{
+    font-family:"Jost",sans-serif;
+    text-transform:uppercase;letter-spacing:.2em;
+    font-size:20px;color:var(--cream);text-decoration:none;
+    padding:15px 26px;border-radius:6px;
+    transition:color .2s ease,background .2s ease;
+  }
+  .mobile-nav a.m-link:hover,.mobile-nav a.m-link.active{color:var(--gold-bright);}
+  .mobile-nav a.m-link.active{background:rgba(236,200,121,.12);}
+  .mobile-close{
+    position:absolute;top:18px;right:22px;
+    width:48px;height:48px;line-height:1;
+    font-size:38px;color:var(--gold-bright);
+    background:none;border:none;cursor:pointer;
+  }
+  .m-lang{margin-top:28px;display:flex;align-items:center;gap:8px;font-family:"Jost",sans-serif;letter-spacing:.12em;}
+  .m-lang .sep{color:rgba(244,231,205,.35);}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:880px){
+    /* header: show the menu items directly (no button needed) */
+    .navwrap{flex-direction:column;margin-top:16px;gap:14px;}
+    .navwrap nav.menu{
+      display:flex;flex-direction:column;gap:8px;width:100%;
+      background:transparent;border:none;border-radius:0;backdrop-filter:none;
+    }
+    .navwrap nav.menu a{
+      width:100%;text-align:center;justify-content:center;
+      border:1px solid rgba(244,231,205,.22);border-radius:9px;
+      padding:14px 12px;font-size:14px;letter-spacing:.14em;
+    }
+    .navwrap .lang{display:flex;position:static;margin:0;}
+    .navwrap .burger{display:none;}
+    /* sticky scrolled bar: keep the hamburger button */
+    .stickybar nav.menu{display:none;}
+    .stickybar .burger{display:flex;}
+
+    .about-grid{grid-template-columns:1fr;}
+    .kanok-panel{position:relative;height:248px;min-height:248px;border-right:none;border-bottom:3px solid var(--gold);}
+    .kanok-medallion{width:min(46%,168px);}
+  }
+  @media (min-width:881px){
+    .mobile-nav{display:none;}
+  }
+  @media (max-width:560px){
+    .brand-wordmark .w1{font-size:26px;}
+    nav.menu a{padding:10px 12px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- sticky condensed header -->
+<div class="stickybar" id="stickybar">
+  <div class="inner">
+    <a class="s-brand" href="#top">
+      <img src="assets/logo.png" alt="Nirvana Thai Massage Day Spa" />
+      <span>NIRVANA</span>
+    </a>
+    <nav class="menu">
+      <a href="#about" class="active" data-i18n="nav_about">O nas</a>
+      <a href="Services.html" data-i18n="nav_services">Usługi</a>
+      <a href="bon.html" data-i18n="nav_voucher">Bon podarunkowy</a>
+      <a href="zespol.html" data-i18n="nav_team">Nasz zespół</a>
+      <a href="kontakt.html" data-i18n="nav_contact">Kontakt</a>
+    </nav>
+    <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</div>
+
+<!-- ===== Header ===== -->
+<header class="topbar" id="top">
+  <div class="brand">
+    <a class="brand-banner" href="#top">
+      <img src="assets/banner-new.png" alt="Nirvana Thai Massage Day Spa" />
+    </a>
+  </div>
+
+  <div class="navwrap">
+    <nav class="menu">
+      <a href="#about" class="active" data-i18n="nav_about">O nas</a>
+      <a href="Services.html" data-i18n="nav_services">Usługi</a>
+      <a href="bon.html" data-i18n="nav_voucher">Bon podarunkowy</a>
+      <a href="zespol.html" data-i18n="nav_team">Nasz zespół</a>
+      <a href="kontakt.html" data-i18n="nav_contact">Kontakt</a>
+    </nav>
+    <div class="lang">
+      <button class="langbtn on" data-lang="pl">PL</button>
+      <span class="sep">|</span>
+      <button class="langbtn" data-lang="en">EN</button>
+    </div>
+    <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+
+  <div class="gold-rule"></div>
+</header>
+
+<!-- ===== Mobile menu overlay ===== -->
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-close" id="mobileClose" aria-label="Zamknij">&times;</button>
+  <img class="m-logo" src="assets/logo.png" alt="" />
+  <a href="#about" class="m-link active" data-i18n="nav_about">O nas</a>
+  <a href="Services.html" class="m-link" data-i18n="nav_services">Usługi</a>
+  <a href="bon.html" class="m-link" data-i18n="nav_voucher">Bon podarunkowy</a>
+  <a href="zespol.html" class="m-link" data-i18n="nav_team">Nasz zespół</a>
+  <a href="kontakt.html" class="m-link" data-i18n="nav_contact">Kontakt</a>
+  <div class="m-lang">
+    <button class="langbtn on" data-lang="pl">PL</button>
+    <span class="sep">|</span>
+    <button class="langbtn" data-lang="en">EN</button>
+  </div>
+</div>
+
+<!-- ===== Hero ===== -->
+<section class="hero">
+  <div class="photo"></div>
+  <div class="veil"></div>
+
+  <!-- kanok corner flourishes -->
+  <svg class="corner tl" viewBox="0 0 120 120" aria-hidden="true">
+    <use href="#kranok-corner"></use>
+  </svg>
+  <svg class="corner tr" viewBox="0 0 120 120" aria-hidden="true">
+    <use href="#kranok-corner"></use>
+  </svg>
+
+  <div class="slogan">
+    <div class="eyebrow" data-i18n="hero_eyebrow">Oryginalny masaż tajski</div>
+    <h2 data-i18n="hero_slogan">Zatrzymamy czas dla Ciebie</h2>
+    <div class="slogan-sub" data-i18n="hero_sub">Eliminuje dolegliwości bólowe i wzmacnia organizm</div>
+  </div>
+</section>
+
+<!-- ===== About ===== -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <!-- About-section panel: photo background + logo medallion -->
+    <div class="kanok-panel">
+      <div class="kanok-medallion">
+        <img src="assets/logo.png" alt="Nirvana Thai Massage Day Spa" />
+      </div>
+    </div>
+
+    <!-- Text content -->
+    <div class="about-content">
+      <div class="eyebrow" data-i18n="about_eyebrow">O nas</div>
+      <h2 class="about-title">Nirvana Thai Massage<span class="ds">Day Spa</span></h2>
+      <div class="title-rule"></div>
+
+      <div class="naturanga-note">
+        <span class="nn-badge" data-i18n="naturanga_badge">dawniej Naturanga</span>
+        <p data-i18n="naturanga_text">Nirvana Thai Massage Day Spa, formerly Naturanga, has been proudly serving clients since 2017. With almost ten years of distinguished experience, we consistently uphold our exceptional massage quality through our dedicated team of expert therapists. Please feel free to contact us at our usual telephone number.</p>
+      </div>
+
+      <div id="about-body"></div>
+
+      <div class="section-divider">
+        <span class="line"></span>
+        <span class="diamond"></span>
+        <span class="line"></span>
+      </div>
+
+      <div class="eyebrow" data-i18n="hist_eyebrow">Tradycja</div>
+      <h3 class="sub" data-i18n="hist_title">Historia masażu</h3>
+      <div class="title-rule"></div>
+      <div id="history-body"></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <img class="f-logo" src="assets/logo.png" alt="" />
+  <div class="f-name">NIRVANA THAI MASSAGE DAY SPA</div>
+  <div class="f-sub" data-i18n="footer_sub">Bielsko-Biała · POLAND</div>
+</footer>
+
+<!-- ===== Shared SVG defs (kanok corner flourish) ===== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <g id="kranok-flame">
+      <path d="M32 88 C 23 64 25 35 39 6 C 41 35 37 64 32 88 Z" fill="#d2a14e"/>
+      <path d="M36 13 C 30 40 31 64 32 84" fill="none" stroke="#8a5f24" stroke-width="1.6" stroke-linecap="round" opacity="0.75"/>
+    </g>
+    <g id="kranok-corner">
+      <use href="#kranok-flame" transform="translate(20,24) scale(0.95)"></use>
+      <use href="#kranok-flame" transform="translate(6,40) scale(0.6) rotate(-32 32 48)"></use>
+      <use href="#kranok-flame" transform="translate(40,40) scale(0.55) rotate(34 32 48)" opacity="0.85"></use>
+    </g>
+  </defs>
+</svg>
+
+<!-- ===== Translations / behaviour ===== -->
+<script>
+const T = {
+  pl:{
+    nav_about:"O nas", nav_services:"Usługi", nav_voucher:"Bon podarunkowy", nav_team:"Nasz zespół", nav_contact:"Kontakt",
+    ph_b:"Miejsce na zdjęcie", ph_s:"wnętrze gabinetu · masaż tajski · spa",
+    hero_eyebrow:"Oryginalny masaż tajski",
+    hero_slogan:"Zatrzymamy czas dla Ciebie",
+    hero_sub:"Eliminuje dolegliwości bólowe i wzmacnia organizm",
+    about_eyebrow:"O nas", about_title:"Nirvana Thai Massage Day Spa",
+    naturanga_badge:"dawniej Naturanga",
+    naturanga_text:"Nirvana Thai Massage, dawniej Naturanga, z dumą obsługuje klientów od 2017 roku. Mając blisko dziesięć lat wyjątkowego doświadczenia, niezmiennie utrzymujemy najwyższą jakość masażu dzięki naszemu oddanemu zespołowi doświadczonych terapeutów. Zapraszamy do kontaktu pod naszym dotychczasowym numerem telefonu.",
+    hist_eyebrow:"Tradycja", hist_title:"Historia masażu",
+    footer_sub:"Bielsko-Biała · POLAND",
+    about:[
+      {lead:true,t:"Gabinet oryginalnego masażu tajskiego Nirvana Thai Massage Day Spa to miejsce, w którym zatrzymamy czas specjalnie dla Ciebie."},
+      {t:"U nas zamknęliśmy cząstkę tajskiej tradycji masażu oraz piękno w naturalnych preparatach i zabiegach. W przepisie na młodość zawarta jest harmonia łącząca ciało i umysł."},
+      {t:"W stan głębokiego relaksu wprowadzą Państwa tajskie masażystki. Wiedzę na temat masaży zdobyły w świątyni WAT PO – Świątynia Odpoczywającego Buddy w Bangkoku (z ponad 200-letnią tradycją masażu) oraz w prestiżowych szkołach masażu w Tajlandii."},
+      {t:"Masaż tajski prowadzi do równowagi ciała, energii i umysłu. Ma on nieocenione właściwości rehabilitacyjne; uważa się, że skraca czas rekonwalescencji, pomaga wyciszyć umysł i znaleźć właściwą równowagę ciała. Przynosi relaksujące i energetyzujące korzyści, wprowadzając spokój i pozytywne uczucie."},
+      {t:"Oferujemy również oryginalne kosmetyki naturalne oraz suplementy o innowacyjnej formule kolagenowej. Odprężenie, jakie Państwo osiągną w naszym SPA, zagwarantuje szybką regenerację i doda energii na kolejne dni."},
+      {sig:true,t:"W Nirvana Thai Massage Day Spa zatrzymamy czas dla Ciebie."}
+    ],
+    history:[
+      {t:"Masaż tajski jest jednym z typów tzw. masażu głębokiego – oddziałuje głęboko na warstwy tkanek i mięśni, przywracając ich prawidłowe funkcjonowanie. Głównym założeniem jest indywidualne podejście do osoby masowanej i jej problemów. Łączy w sobie tradycję i kulturę indyjską (joga, buddyzm) oraz chińską (akupunktura i ziołolecznictwo). W Tajlandii słowo „nuad boran” oznacza dosłownie „starożytny masaż”, nawiązując do swojej wielowiekowej tradycji i historii."},
+      {t:"Za „ojca” masażu tajskiego uznaje się Shivago Komarpaj, który wedle legendy był osobistym lekarzem Buddy 500 lat p.n.e. Historia masażu tajskiego sięga jednak dalej – w niektórych księgach wspomina się, że narodził się już 2,5 tys. lat p.n.e. Obecnie całą wiedzę na temat masażu tajskiego zawdzięcza się królowi Ramie III, który nakazał zebrać wszystkie informacje o starożytnych technikach masażu i wyryć je na kamiennych tablicach. Do dziś można je oglądać i studiować w świątyni WAT PHO w Bangkoku, gdzie nauki pobierały nasze masażystki."},
+      {t:"Współcześnie świątynia ta jest jedną z głównych, królewskich świątyń, a zarazem najstarszą świątynią w Tajlandii nauczającą masażu tajskiego. Kilkuletnie studia masażu i medycyny tajskiej zarezerwowane są wyłącznie dla rdzennych mieszkańców. Obecnie masaż tajski jest częścią Medycyny Królewskiej, w której Rząd Tajlandii zawarł całą wiedzę na temat sztuki medycznej."},
+      {t:"W najlepszych szkołach orientu, poza podstawową wiedzą o technikach masażu, zdobywa się również umiejętności i doświadczenie nakazujące intuicyjne podejście do pacjenta. Masaż powinien pochodzić z serca, gdyż sama wiedza nie wystarczy. Opiera się on o pewną filozofię życia i jest jedną z czterech gałęzi tajlandzkich tradycji medycznych (obok ziołolecznictwa, dietetyki oraz praktyk rytualnych). Dziś wspomina się o ok. 80 rodzajach masażu tajskiego – do najpopularniejszych należą klasyczny masaż tajski, masaż olejkami, masaż gorącymi kamieniami oraz stemplami ziołowymi."},
+      {t:"Mimo wielowiekowej tradycji masaż tajski bywa kojarzony przez obcokrajowców z elementem erotycznym, co jest błędną interpretacją. Tradycja i filozofia masażu nawiązują do przywrócenia harmonii ciała i umysłu dzięki jego właściwościom leczniczym. Klasyczny masaż tajski rozładowuje napięcie mięśniowe, uelastycznia stawy i ścięgna, pobudza układ krwionośny i limfatyczny, wzmacnia organizm, a jednocześnie relaksuje ciało i działa odmładzająco."},
+      {t:"Każdy rodzaj masażu tajskiego ma pozytywny wpływ na całe ciało. Relaksuje i wzmacnia organizm, dlatego polecany jest wszystkim."}
+    ]
+  },
+  en:{
+    nav_about:"About us", nav_services:"Services", nav_voucher:"Gift voucher", nav_team:"Our team", nav_contact:"Contact",
+    ph_b:"Photo placeholder", ph_s:"studio interior · thai massage · spa",
+    hero_eyebrow:"Authentic Thai massage",
+    hero_slogan:"We will stop time for you",
+    hero_sub:"Relieves pain and strengthens the body",
+    about_eyebrow:"About us", about_title:"Nirvana Thai Massage Day Spa",
+    naturanga_badge:"formerly Naturanga",
+    naturanga_text:"Nirvana Thai Massage Day Spa, formerly Naturanga, has been proudly serving clients since 2017. With almost ten years of distinguished experience, we consistently uphold our exceptional massage quality through our dedicated team of expert therapists. Please feel free to contact us at our usual telephone number.",
+    hist_eyebrow:"Tradition", hist_title:"History of massage",
+    footer_sub:"Bielsko-Biała · POLAND",
+    about:[
+      {lead:true,t:"The Nirvana Thai Massage Day Spa — a studio of authentic Thai massage — is a place where we stop time especially for you."},
+      {t:"Here we have captured a piece of the Thai tradition of massage, together with the beauty held within natural preparations and treatments. In our recipe for youth lies a harmony that unites body and mind."},
+      {t:"Our Thai therapists will guide you into a state of deep relaxation. They gained their knowledge of massage at the temple of WAT PO – the Temple of the Reclining Buddha in Bangkok (with over 200 years of massage tradition) – and at prestigious massage schools throughout Thailand."},
+      {t:"Thai massage brings the body, energy and mind into balance. It has invaluable rehabilitative properties; it is believed to shorten recovery time, helps quiet the mind and restore the body's proper equilibrium. It brings both relaxing and energising benefits, instilling calm and a positive feeling."},
+      {t:"We also offer original natural cosmetics and supplements with an innovative collagen formula. The relaxation you will achieve in our SPA guarantees swift regeneration and adds energy for the days ahead."},
+      {sig:true,t:"At Nirvana Thai Massage Day Spa, we will stop time for you."}
+    ],
+    history:[
+      {t:"Thai massage is one of the so-called deep massage types – it works deep into the layers of tissue and muscle, restoring their proper function. Its main principle is an individual approach to each person and their concerns. It combines Indian tradition and culture (yoga, Buddhism) with Chinese (acupuncture and herbalism). In Thailand the word “nuad boran” literally means “ancient massage”, referring to its centuries-old tradition and history."},
+      {t:"Shivago Komarpaj is regarded as the “father” of Thai massage; according to legend he was the personal physician of the Buddha around 500 BC. The history of Thai massage, however, reaches even further back – some texts mention it was born as early as 2,500 BC. Today, all knowledge of Thai massage is owed to King Rama III, who ordered all information about the ancient massage techniques to be gathered and carved onto stone tablets. They can still be viewed and studied at the WAT PHO temple in Bangkok, where our therapists studied."},
+      {t:"Today this temple is one of the principal royal temples and at the same time the oldest temple in Thailand teaching Thai massage. The several-year studies of Thai massage and medicine are reserved exclusively for native inhabitants. Thai massage is now part of Royal Medicine, in which the Government of Thailand has gathered all knowledge of the medical art."},
+      {t:"In the finest schools of the Orient, beyond the basic knowledge of massage techniques, one also gains skills and experience that call for an intuitive approach to the patient. Massage should come from the heart, for knowledge alone is not enough. It rests on a certain philosophy of life and is one of the four branches of Thai medical traditions (alongside herbalism, dietetics and ritual practices). Around 80 types of Thai massage are said to exist today — the most popular being classic Thai massage, oil massage, hot stone massage and herbal compress massage."},
+      {t:"Despite its centuries-old tradition, Thai massage is sometimes associated by foreigners with an erotic element, which is a mistaken interpretation. The tradition and philosophy of massage relate to restoring the harmony of body and mind through its healing properties. Classic Thai massage relieves muscle tension, makes joints and tendons more supple, stimulates the circulatory and lymphatic systems, strengthens the body and at the same time relaxes it and has a rejuvenating effect."},
+      {t:"Every type of Thai massage has a positive effect on the whole body. It relaxes and strengthens the organism, which is why it is recommended for everyone."}
+    ]
+  }
+};
+
+function renderBody(targetId, arr){
+  const el = document.getElementById(targetId);
+  el.innerHTML = arr.map(o=>{
+    if(o.sig) return `<p class="signature">${o.t}</p>`;
+    return `<p class="${o.lead?'lead':''}">${o.t}</p>`;
+  }).join("");
+}
+
+function setLang(lang){
+  const dict = T[lang];
+  document.documentElement.lang = lang;
+  document.querySelectorAll("[data-i18n]").forEach(n=>{
+    const k = n.getAttribute("data-i18n");
+    if(dict[k]!==undefined) n.textContent = dict[k];
+  });
+  renderBody("about-body", dict.about);
+  renderBody("history-body", dict.history);
+  document.querySelectorAll(".langbtn").forEach(b=>b.classList.toggle("on", b.dataset.lang===lang));
+  try{ localStorage.setItem("nirvana_lang", lang); }catch(e){}
+}
+
+document.querySelectorAll(".langbtn").forEach(b=>b.addEventListener("click",()=>setLang(b.dataset.lang)));
+
+// mobile hamburger menu
+const mobileNav = document.getElementById("mobileNav");
+document.querySelectorAll(".burger").forEach(b=>b.addEventListener("click",()=>mobileNav.classList.add("open")));
+document.getElementById("mobileClose").addEventListener("click",()=>mobileNav.classList.remove("open"));
+document.querySelectorAll(".mobile-nav a.m-link").forEach(a=>a.addEventListener("click",()=>mobileNav.classList.remove("open")));
+
+let saved = "pl";
+try{ saved = localStorage.getItem("nirvana_lang") || "pl"; }catch(e){}
+setLang(saved);
+
+// sticky header reveal
+const sticky = document.getElementById("stickybar");
+const hero = document.querySelector(".hero");
+window.addEventListener("scroll",()=>{
+  const trigger = hero.offsetTop + hero.offsetHeight * 0.5;
+  sticky.classList.toggle("show", window.scrollY > trigger);
+},{passive:true});
+</script>
+</body>
+</html>

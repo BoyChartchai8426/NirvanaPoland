@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Usługi — Nirvana Thai Massage Day Spa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/nirvana-shared.css" />
+<style>
+  .page-wrap{ max-width:var(--maxw); margin:0 auto; padding:54px 24px 30px; }
+  .page-head{ text-align:center; margin-bottom:42px; }
+  .page-head .eyebrow{
+    font-family:"Jost",sans-serif; letter-spacing:.42em; text-transform:uppercase;
+    font-size:13px; color:var(--gold-bright); margin-bottom:12px;
+  }
+  .page-head h1{
+    font-family:"Cormorant Garamond",serif; font-weight:600;
+    font-size:clamp(34px,4.6vw,54px); margin:0; color:var(--cream);
+  }
+  .svc-lead{ margin:18px auto 0; max-width:80ch; text-align:center; }
+  .svc-lead p{ margin:0 0 16px; color:var(--cream-dim); font-size:17.5px; line-height:1.75; text-wrap:pretty; }
+  .svc-lead p:first-child{ color:var(--cream); font-size:18.5px; }
+  .svc-lead p:last-child{ margin-bottom:0; }
+  .head-flourish{
+    width:64px;height:64px;margin:18px auto 0;opacity:.85;
+  }
+
+  /* ---------- Grid ---------- */
+  .svc-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:26px;
+    padding-bottom:64px;
+  }
+  .svc-card{
+    display:flex;flex-direction:column;
+    background:linear-gradient(180deg,#5d2207 0%, #4a1804 100%);
+    border:1px solid rgba(236,200,121,.28);
+    border-radius:12px;overflow:hidden;
+    text-decoration:none;color:inherit;
+    box-shadow:0 10px 26px rgba(20,8,2,.35);
+    transition:transform .28s ease, box-shadow .28s ease, border-color .28s ease;
+  }
+  .svc-card.live:hover{
+    transform:translateY(-6px);
+    box-shadow:0 18px 40px rgba(20,8,2,.5);
+    border-color:var(--gold-bright);
+  }
+  .svc-media{
+    position:relative; aspect-ratio:1/1; overflow:hidden;
+    background:#7d5a40;
+  }
+  .svc-media img{ width:100%;height:100%;object-fit:cover;display:block;
+    transition:transform .5s ease; }
+  .svc-card.live:hover .svc-media img{ transform:scale(1.05); }
+  .svc-title{
+    position:absolute; left:0;right:0;bottom:0;
+    padding:13px 16px;
+    background:linear-gradient(180deg, rgba(40,16,4,0) 0%, rgba(40,16,4,.82) 36%, rgba(40,16,4,.92) 100%);
+    color:var(--cream);
+    font-family:"Cormorant Garamond",serif; font-weight:600;
+    font-size:22px; line-height:1.15; text-align:center;
+    text-shadow:0 2px 8px rgba(0,0,0,.6);
+  }
+  .svc-foot{
+    display:flex; flex-direction:column; align-items:center; gap:14px;
+    padding:20px 18px 22px;
+    border-top:1px solid rgba(236,200,121,.16);
+    flex:1; justify-content:center;
+  }
+  .svc-price{
+    font-family:"Cormorant Garamond",serif; color:var(--gold-bright);
+    font-size:26px; font-weight:600; letter-spacing:.01em;
+  }
+  .svc-price small{
+    display:block; font-family:"Jost",sans-serif; font-weight:400;
+    font-size:11px; letter-spacing:.24em; text-transform:uppercase;
+    color:var(--cream-faint); margin-bottom:2px; white-space:nowrap;
+  }
+  .svc-btn{
+    font-family:"Jost",sans-serif; font-weight:500; letter-spacing:.14em;
+    text-transform:uppercase; font-size:12.5px;
+    color:#5a2208;
+    background:linear-gradient(180deg,var(--gold-bright) 0%,var(--gold) 55%,var(--gold-deep) 100%);
+    padding:12px 22px; border-radius:30px; white-space:nowrap;
+    display:inline-flex;align-items:center;gap:8px;
+    box-shadow:0 4px 14px rgba(169,119,45,.4);
+    transition:filter .2s ease, transform .2s ease;
+  }
+  .svc-card.live:hover .svc-btn{ filter:brightness(1.06); transform:translateY(-1px); }
+  .svc-btn svg{width:14px;height:14px;}
+
+  /* placeholder cards */
+  .svc-card.soon{ opacity:.92; cursor:default; }
+  .svc-media.empty{
+    display:flex;align-items:center;justify-content:center;
+    background:
+      radial-gradient(120% 120% at 50% 0%, #6a3414 0%, #4a1804 80%);
+  }
+  .svc-media.empty .ph-mark{
+    width:62px;height:62px;opacity:.5;
+  }
+  .svc-foot.soon-foot{ color:var(--cream-faint); }
+  .soon-tag{
+    font-family:"Jost",sans-serif; letter-spacing:.24em; text-transform:uppercase;
+    font-size:12px; color:var(--cream-faint);
+    border:1px dashed rgba(236,200,121,.4); border-radius:30px;
+    padding:9px 20px;
+  }
+
+  @media (max-width:1080px){ .svc-grid{ grid-template-columns:repeat(2,1fr); gap:22px; } }
+  @media (max-width:560px){
+    .svc-grid{ grid-template-columns:1fr; }
+    .page-wrap{ padding-top:34px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- sticky condensed header -->
+<div class="stickybar" id="stickybar">
+  <div class="inner">
+    <a class="s-brand" href="index.html#top">
+      <img src="assets/logo.png" alt="Nirvana Thai Massage Day Spa" />
+      <span>NIRVANA</span>
+    </a>
+    <nav class="menu">
+      <a href="index.html#about" data-i18n="nav_about">O nas</a>
+      <a href="Services.html" class="active" data-i18n="nav_services">Usługi</a>
+      <a href="bon.html" data-i18n="nav_voucher">Bon podarunkowy</a>
+      <a href="zespol.html" data-i18n="nav_team">Nasz zespół</a>
+      <a href="kontakt.html" data-i18n="nav_contact">Kontakt</a>
+    </nav>
+    <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</div>
+
+<!-- ===== Header ===== -->
+<header class="topbar" id="top">
+  <div class="brand">
+    <a class="brand-banner" href="index.html#top">
+      <img src="assets/banner-new.png" alt="Nirvana Thai Massage Day Spa" />
+    </a>
+  </div>
+
+  <div class="navwrap">
+    <nav class="menu">
+      <a href="index.html#about" data-i18n="nav_about">O nas</a>
+      <a href="Services.html" class="active" data-i18n="nav_services">Usługi</a>
+      <a href="bon.html" data-i18n="nav_voucher">Bon podarunkowy</a>
+      <a href="zespol.html" data-i18n="nav_team">Nasz zespół</a>
+      <a href="kontakt.html" data-i18n="nav_contact">Kontakt</a>
+    </nav>
+    <div class="lang">
+      <button class="langbtn on" data-lang="pl">PL</button>
+      <span class="sep">|</span>
+      <button class="langbtn" data-lang="en">EN</button>
+    </div>
+    <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+
+  <div class="gold-rule"></div>
+</header>
+
+<!-- ===== Mobile menu overlay ===== -->
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-close" id="mobileClose" aria-label="Zamknij">&times;</button>
+  <img class="m-logo" src="assets/logo.png" alt="" />
+  <a href="index.html#about" class="m-link" data-i18n="nav_about">O nas</a>
+  <a href="Services.html" class="m-link active" data-i18n="nav_services">Usługi</a>
+  <a href="bon.html" class="m-link" data-i18n="nav_voucher">Bon podarunkowy</a>
+  <a href="zespol.html" class="m-link" data-i18n="nav_team">Nasz zespół</a>
+  <a href="kontakt.html" class="m-link" data-i18n="nav_contact">Kontakt</a>
+  <div class="m-lang">
+    <button class="langbtn on" data-lang="pl">PL</button>
+    <span class="sep">|</span>
+    <button class="langbtn" data-lang="en">EN</button>
+  </div>
+</div>
+
+<!-- ===== Page content ===== -->
+<main class="page-wrap">
+  <div class="page-head">
+    <div class="eyebrow" data-i18n="svc_eyebrow">Nasza oferta</div>
+    <h1 data-i18n="svc_heading">Usługi</h1>
+    <div class="svc-lead">
+      <p data-i18n="svc_lead"></p>
+      <p data-i18n="svc_lead2"></p>
+    </div>
+    <svg class="head-flourish" viewBox="0 0 120 120" aria-hidden="true"><use href="#kranok-corner"></use></svg>
+  </div>
+
+  <div class="svc-grid">
+
+    <!-- Service 1 -->
+    <a class="svc-card live" href="service-thai.html">
+      <div class="svc-media">
+        <img src="assets/sv1.jpg" alt="Tradycyjny Masaż Tajski" />
+        <div class="svc-title" data-i18n="svc1_title">Tradycyjny Masaż Tajski</div>
+      </div>
+      <div class="svc-foot">
+        <div class="svc-price"><small data-i18n="price_from">Cena od</small><span data-i18n="svc1_price">170 zł</span></div>
+        <span class="svc-btn">
+          <span data-i18n="btn_more">Zobacz więcej</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </span>
+      </div>
+    </a>
+
+    <!-- Service 2 -->
+    <a class="svc-card live" href="service-oil.html">
+      <div class="svc-media">
+        <img src="assets/sv2.jpg" alt="Relaksacyjny masaż olejkiem" />
+        <div class="svc-title" data-i18n="svc2_title">Relaksacyjny masaż olejkiem</div>
+      </div>
+      <div class="svc-foot">
+        <div class="svc-price"><small data-i18n="price_from">Cena od</small><span data-i18n="svc2_price">200 zł</span></div>
+        <span class="svc-btn">
+          <span data-i18n="btn_more">Zobacz więcej</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </span>
+      </div>
+    </a>
+
+    <!-- Service 3 -->
+    <a class="svc-card live" href="service-stamp.html">
+      <div class="svc-media">
+        <img src="assets/sv3.jpg" alt="Masaż stemplami ziołowymi" />
+        <div class="svc-title" data-i18n="svc3_title">Masaż stemplami ziołowymi</div>
+      </div>
+      <div class="svc-foot">
+        <div class="svc-price"><small data-i18n="price_from">Cena od</small><span data-i18n="svc3_price">230 zł</span></div>
+        <span class="svc-btn">
+          <span data-i18n="btn_more">Zobacz więcej</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </span>
+      </div>
+    </a>
+
+    <!-- Service 4 -->
+    <a class="svc-card live" href="service-lomi.html">
+      <div class="svc-media">
+        <img src="assets/sv4.jpg" alt="Masaż Lomi Lomi" />
+        <div class="svc-title" data-i18n="svc4_title">Masaż Lomi Lomi</div>
+      </div>
+      <div class="svc-foot">
+        <div class="svc-price"><small data-i18n="price_from">Cena od</small><span data-i18n="svc4_price">220 zł</span></div>
+        <span class="svc-btn">
+          <span data-i18n="btn_more">Zobacz więcej</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </span>
+      </div>
+    </a>
+
+    <!-- Service 5 -->
+    <a class="svc-card live" href="service-hotstone.html">
+      <div class="svc-media">
+        <img src="assets/sv5.jpg" alt="Masaż gorącymi kamieniami" />
+        <div class="svc-title" data-i18n="svc5_title">Masaż gorącymi kamieniami</div>
+      </div>
+      <div class="svc-foot">
+        <div class="svc-price"><small data-i18n="price_from">Cena od</small><span data-i18n="svc5_price">280 zł</span></div>
+        <span class="svc-btn">
+          <span data-i18n="btn_more">Zobacz więcej</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </span>
+      </div>
+    </a>
+
+    <!-- Service 6 -->
+    <a class="svc-card live" href="service-sport.html">
+      <div class="svc-media">
+        <img src="assets/sv6.jpg" alt="Masaż sportowy" />
+        <div class="svc-title" data-i18n="svc6_title">Masaż sportowy</div>
+      </div>
+      <div class="svc-foot">
+        <div class="svc-price"><small data-i18n="price_from">Cena od</small><span data-i18n="svc6_price">190 zł</span></div>
+        <span class="svc-btn">
+          <span data-i18n="btn_more">Zobacz więcej</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </span>
+      </div>
+    </a>
+
+    <!-- Service 7 -->
+    <a class="svc-card live" href="service-pregnancy.html">
+      <div class="svc-media">
+        <img src="assets/sv7.jpg" alt="Masaż dla kobiet w ciąży" />
+        <div class="svc-title" data-i18n="svc7_title">Masaż dla kobiet w ciąży</div>
+      </div>
+      <div class="svc-foot">
+        <div class="svc-price"><small data-i18n="price_from">Cena od</small><span data-i18n="svc7_price">210 zł</span></div>
+        <span class="svc-btn">
+          <span data-i18n="btn_more">Zobacz więcej</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </span>
+      </div>
+    </a>
+
+    <!-- Service 8 -->
+    <a class="svc-card live" href="service-aroma.html">
+      <div class="svc-media">
+        <img src="assets/sv8.jpg" alt="Aromaterapia" />
+        <div class="svc-title" data-i18n="svc8_title">Aromaterapia</div>
+      </div>
+      <div class="svc-foot">
+        <div class="svc-price"><small data-i18n="price_from">Cena od</small><span data-i18n="svc8_price">180 zł</span></div>
+        <span class="svc-btn">
+          <span data-i18n="btn_more">Zobacz więcej</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </span>
+      </div>
+    </a>
+
+    <!-- Service 9 -->
+    <a class="svc-card live" href="service-partial.html">
+      <div class="svc-media">
+        <img src="assets/sv9.jpg" alt="Masaż częściowy" />
+        <div class="svc-title" data-i18n="svc9_title">Masaż częściowy</div>
+      </div>
+      <div class="svc-foot">
+        <div class="svc-price"><small data-i18n="price_from">Cena od</small><span data-i18n="svc9_price">140 zł</span></div>
+        <span class="svc-btn">
+          <span data-i18n="btn_more">Zobacz więcej</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </span>
+      </div>
+    </a>
+
+    <!-- Service 10 -->
+    <a class="svc-card live" href="service-foot.html">
+      <div class="svc-media">
+        <img src="assets/sv10.jpg" alt="Relaksacyjny masaż stóp" />
+        <div class="svc-title" data-i18n="svc10_title">Relaksacyjny masaż stóp</div>
+      </div>
+      <div class="svc-foot">
+        <div class="svc-price"><small data-i18n="price_from">Cena od</small><span data-i18n="svc10_price">120 zł</span></div>
+        <span class="svc-btn">
+          <span data-i18n="btn_more">Zobacz więcej</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </span>
+      </div>
+    </a>
+
+    <!-- Service 11 -->
+    <a class="svc-card live" href="service-remedial.html">
+      <div class="svc-media">
+        <img src="assets/sv11.jpg" alt="Remedial" />
+        <div class="svc-title" data-i18n="svc11_title">Remedial</div>
+      </div>
+      <div class="svc-foot">
+        <div class="svc-price"><small data-i18n="price_from">Cena od</small><span data-i18n="svc11_price">190 zł</span></div>
+        <span class="svc-btn">
+          <span data-i18n="btn_more">Zobacz więcej</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </span>
+      </div>
+    </a>
+
+  </div>
+</main>
+
+<footer>
+  <img class="f-logo" src="assets/logo.png" alt="" />
+  <div class="f-name">NIRVANA THAI MASSAGE DAY SPA</div>
+  <div class="f-sub" data-i18n="footer_sub">Bielsko-Biała · POLAND</div>
+</footer>
+
+<!-- shared kanok flourish defs -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <g id="kranok-flame">
+      <path d="M32 88 C 23 64 25 35 39 6 C 41 35 37 64 32 88 Z" fill="#d2a14e"/>
+      <path d="M36 13 C 30 40 31 64 32 84" fill="none" stroke="#8a5f24" stroke-width="1.6" stroke-linecap="round" opacity="0.75"/>
+    </g>
+    <g id="kranok-corner">
+      <use href="#kranok-flame" transform="translate(20,24) scale(0.95)"></use>
+      <use href="#kranok-flame" transform="translate(6,40) scale(0.6) rotate(-32 32 48)"></use>
+      <use href="#kranok-flame" transform="translate(40,40) scale(0.55) rotate(34 32 48)" opacity="0.85"></use>
+    </g>
+  </defs>
+</svg>
+
+<script>
+window.PAGE_I18N = {"pl":{"svc_eyebrow":"Nasza oferta","svc_heading":"Usługi","svc_lead":"Tradycyjny masaż tajski to holistyczna metoda dbania o zdrowie, która przynosi wszechstronne korzyści dla całego organizmu. Nie tylko skutecznie redukuje zmęczenie i łagodzi stres, ale również wzmacnia układ odpornościowy oraz efektywnie uśmierza ból. Z tego względu jest to idealna forma regeneracji dla każdego, kto pragnie zadbać o swoje zdrowie i dobre samopoczucie.","svc_lead2":"Ponadto, masaż tajski stanowi doskonałe wsparcie dla osób zmagających się z napięciem mięśniowym wywołanym przez stres lub zaburzenia nerwicowe. Dzięki precyzyjnemu uciskowi odpowiednich punktów na ciele, terapeuta jest w stanie dotrzeć bezpośrednio do źródła bólu, skutecznie rozluźniając spięte obszary i przynosząc wyraźną ulgę.","price_from":"Cena od","btn_more":"Zobacz więcej","soon":"Wkrótce","footer_sub":"Bielsko-Biała · POLAND","nav_about":"O nas","nav_services":"Usługi","nav_voucher":"Bon podarunkowy","nav_contact":"Kontakt","svc1_title":"Tradycyjny Masaż Tajski","svc1_price":"170 zł","svc2_title":"Relaksacyjny masaż olejkiem","svc2_price":"200 zł","svc3_title":"Masaż stemplami ziołowymi","svc3_price":"230 zł","svc4_title":"Masaż Lomi Lomi","svc4_price":"220 zł","svc5_title":"Masaż gorącymi kamieniami","svc5_price":"280 zł","svc6_title":"Masaż sportowy","svc6_price":"190 zł","svc7_title":"Masaż dla kobiet w ciąży","svc7_price":"210 zł","svc8_title":"Aromaterapia","svc8_price":"180 zł","svc9_title":"Masaż częściowy","svc9_price":"140 zł","svc10_title":"Relaksacyjny masaż stóp","svc10_price":"120 zł","svc11_title":"Remedial","svc11_price":"190 zł"},"en":{"svc_eyebrow":"Our offer","svc_heading":"Services","svc_lead":"Traditional Thai massage is a holistic method of caring for your health that brings comprehensive benefits to the whole body. It not only effectively reduces fatigue and relieves stress, but also strengthens the immune system and effectively eases pain. For this reason it is an ideal form of regeneration for anyone who wishes to take care of their health and wellbeing.","svc_lead2":"Moreover, Thai massage is excellent support for people struggling with muscle tension caused by stress or nervous disorders. Thanks to precise pressure on the appropriate points on the body, the therapist is able to reach directly to the source of the pain, effectively loosening tense areas and bringing noticeable relief.","price_from":"From","btn_more":"See more","soon":"Coming soon","footer_sub":"Bielsko-Biała · POLAND","nav_about":"About us","nav_services":"Services","nav_voucher":"Gift voucher","nav_contact":"Contact","svc1_title":"Traditional Thai Massage","svc1_price":"170 zł","svc2_title":"Relaxing Oil Massage","svc2_price":"200 zł","svc3_title":"Herbal Compress Massage","svc3_price":"230 zł","svc4_title":"Lomi Lomi Massage","svc4_price":"220 zł","svc5_title":"Hot Stone Massage","svc5_price":"280 zł","svc6_title":"Sports Massage","svc6_price":"190 zł","svc7_title":"Pregnancy Massage","svc7_price":"210 zł","svc8_title":"Aromatherapy","svc8_price":"180 zł","svc9_title":"Partial Massage","svc9_price":"140 zł","svc10_title":"Relaxing Foot Massage","svc10_price":"120 zł","svc11_title":"Remedial","svc11_price":"190 zł"}};
+</script>
+<script src="assets/nirvana-shared.js"></script>
+</body>
+</html>

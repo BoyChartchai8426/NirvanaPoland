@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dao — Nirvana Thai Massage Day Spa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/nirvana-shared.css" />
+<style>
+  :root{ --dh:74px; }
+  .detail-header{ position:sticky; top:0; left:0; right:0; z-index:60; height:var(--dh);
+    background:linear-gradient(180deg,#8a3413 0%, #6f2708 100%); border-bottom:2px solid var(--gold);
+    box-shadow:0 6px 20px rgba(20,8,2,.35); }
+  .detail-header .inner{ max-width:var(--maxw); margin:0 auto; height:100%; display:flex; align-items:center; gap:18px; padding:0 20px; }
+  .dh-center{ flex:1; display:flex; align-items:center; justify-content:center; gap:22px; min-width:0; }
+  .dh-brand{ display:flex; align-items:center; gap:11px; text-decoration:none; color:var(--gold-bright); }
+  .dh-brand img{ width:42px; height:42px; }
+  .dh-brand span{ font-family:"Cinzel","Cormorant Garamond",serif; font-weight:700; letter-spacing:.12em; font-size:18px; }
+  .dh-brand-left{ margin-right:6px; }
+  .detail-header nav.menu{ background:rgba(244,231,205,.08); }
+  .detail-header nav.menu a{ padding:10px 13px; font-size:12px; letter-spacing:.08em; }
+  .dh-lang{ display:flex; align-items:center; gap:2px; font-family:"Jost",sans-serif; font-size:13px; letter-spacing:.12em; }
+  .dh-lang .sep{ color:rgba(244,231,205,.3); }
+
+  .detail{ display:grid; grid-template-columns:42% 1fr; align-items:start; }
+  .detail-img{ position:sticky; top:var(--dh); height:calc(100vh - var(--dh));
+    background:#3c1404 url('assets/team-dao.jpg') center 22%/cover no-repeat; }
+  .detail-img::after{ content:""; position:absolute; inset:0;
+    background:linear-gradient(90deg, rgba(40,16,4,0) 70%, rgba(122,42,10,.55) 100%); }
+  .detail-body{ padding:54px clamp(26px,4.4vw,72px) 64px; min-height:calc(100vh - var(--dh)); }
+
+  .member-eyebrow{ font-family:"Jost",sans-serif; letter-spacing:.32em; text-transform:uppercase; font-size:12px; color:var(--gold-bright); margin-bottom:16px; }
+  .detail-body h1{ font-family:"Cormorant Garamond",serif; font-weight:600; font-size:clamp(38px,4.6vw,58px); line-height:1.04; color:var(--gold-bright); margin:0 0 4px; }
+  .member-full{ font-family:"Cormorant Garamond",serif; font-style:italic; font-weight:500; font-size:clamp(20px,2.2vw,26px); color:var(--cream-dim); margin:0 0 18px; }
+  .detail-rule{ width:120px;height:2px; background:linear-gradient(90deg,var(--gold-bright),rgba(210,161,78,0)); margin:0 0 26px; }
+
+  .spec-chips{ display:flex; flex-wrap:wrap; gap:10px; margin:0 0 34px; }
+  .spec-chips span{ font-family:"Jost",sans-serif; font-size:12px; font-weight:500; letter-spacing:.12em; text-transform:uppercase;
+    color:#5a2208; background:linear-gradient(180deg,var(--gold-bright) 0%,var(--gold) 60%,var(--gold-deep) 100%);
+    padding:8px 16px; border-radius:30px; box-shadow:0 4px 12px rgba(169,119,45,.34); }
+
+  .detail-body p{ margin:0 0 20px; color:var(--cream-dim); max-width:62ch; text-wrap:pretty; font-size:18px; line-height:1.74; }
+  .detail-body p.lead{ font-size:21px; color:var(--cream); font-style:italic; }
+
+  /* certificate block */
+  .cert{ margin:38px 0 0; max-width:780px; }
+  .cert-cap{ font-family:"Jost",sans-serif; letter-spacing:.2em; text-transform:uppercase; font-size:12px; color:var(--gold-bright); margin-bottom:14px; display:flex; align-items:center; gap:10px; }
+  .cert-cap::before{ content:""; width:22px; height:1px; background:var(--gold); display:inline-block; }
+  .cert-frame{
+    display:block; padding:10px; border-radius:8px;
+    background:linear-gradient(180deg, rgba(210,161,78,.2) 0%, rgba(210,161,78,.07) 100%);
+    border:1px solid rgba(236,200,121,.4);
+    box-shadow:0 12px 30px rgba(20,8,2,.4);
+    transition:transform .25s ease, box-shadow .25s ease;
+    cursor:zoom-in;
+  }
+  .cert-frame:hover{ transform:translateY(-3px); box-shadow:0 18px 40px rgba(20,8,2,.55); }
+  .cert-frame img{ width:100%; height:auto; display:block; border-radius:4px; }
+  .cert-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:14px; align-items:start; }
+  .cert-grid .cert-frame{ margin:0; }
+  @media (max-width:600px){ .cert-grid{ grid-template-columns:1fr; } }
+  .cert-note{ font-family:"EB Garamond",serif; font-style:italic; color:var(--cream-faint); font-size:14.5px; margin-top:10px; }
+
+  /* lightbox */
+  .lightbox{ position:fixed; inset:0; z-index:200; background:rgba(20,8,2,.9);
+    display:none; align-items:center; justify-content:center; padding:30px; cursor:zoom-out; }
+  .lightbox.open{ display:flex; }
+  .lightbox img{ max-width:96vw; max-height:92vh; border-radius:6px; box-shadow:0 20px 60px rgba(0,0,0,.6); border:3px solid var(--gold); }
+  .lightbox .lb-close{ position:absolute; top:18px; right:24px; font-size:40px; line-height:1; color:var(--cream); background:none; border:none; cursor:pointer; }
+
+  .member-back{ border-top:2px solid var(--gold-deep); background:linear-gradient(180deg,#4a1804 0%, #3c1404 100%); padding:40px 24px 48px; text-align:center; }
+  .member-back .ex-cap{ font-family:"Jost",sans-serif; letter-spacing:.3em; text-transform:uppercase; font-size:12px; color:var(--gold-bright); margin-bottom:20px; }
+  .ex-all{ display:inline-flex; align-items:center; gap:9px; justify-content:center; text-align:center;
+    font-family:"Jost",sans-serif; letter-spacing:.16em; text-transform:uppercase; font-size:12.5px; color:#5a2208;
+    background:linear-gradient(180deg,var(--gold-bright) 0%,var(--gold) 55%,var(--gold-deep) 100%); padding:14px 26px; border-radius:30px;
+    text-decoration:none; white-space:nowrap; box-shadow:0 5px 16px rgba(169,119,45,.4); transition:filter .2s ease, transform .2s ease; }
+  .ex-all:hover{ filter:brightness(1.06); transform:translateY(-2px); }
+  .ex-all svg{ width:16px; height:16px; }
+
+  @media (max-width:880px){
+    .detail{ grid-template-columns:1fr; }
+    .detail-img{ position:relative; top:0; height:56vh; min-height:340px; }
+    .detail-img::after{ background:linear-gradient(180deg, rgba(40,16,4,0) 60%, rgba(40,16,4,.5) 100%); }
+    .detail-body{ min-height:0; padding:38px 22px 52px; }
+    .detail-header nav.menu{ display:none; }
+    .dh-lang{ display:none; }
+    .detail-header .burger{ display:flex; }
+  }
+  @media (min-width:881px){ .detail-header .burger{ display:none; } }
+</style>
+</head>
+<body>
+
+<header class="detail-header">
+  <div class="inner">
+    <a class="dh-brand dh-brand-left" href="index.html#top">
+      <img src="assets/logo.png" alt="Nirvana Thai Massage Day Spa" />
+      <span>NIRVANA</span>
+    </a>
+    <div class="dh-center">
+      <nav class="menu">
+        <a href="index.html#about" data-i18n="nav_about">O nas</a>
+        <a href="Services.html" data-i18n="nav_services">Usługi</a>
+        <a href="bon.html" data-i18n="nav_voucher">Bon podarunkowy</a>
+        <a href="zespol.html" class="active" data-i18n="nav_team">Nasz zespół</a>
+        <a href="kontakt.html" data-i18n="nav_contact">Kontakt</a>
+      </nav>
+    </div>
+    <div class="dh-lang">
+      <button class="langbtn on" data-lang="pl">PL</button>
+      <span class="sep">|</span>
+      <button class="langbtn" data-lang="en">EN</button>
+    </div>
+    <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-close" id="mobileClose" aria-label="Zamknij">&times;</button>
+  <img class="m-logo" src="assets/logo.png" alt="" />
+  <a href="index.html#about" class="m-link" data-i18n="nav_about">O nas</a>
+  <a href="Services.html" class="m-link" data-i18n="nav_services">Usługi</a>
+  <a href="bon.html" class="m-link" data-i18n="nav_voucher">Bon podarunkowy</a>
+  <a href="zespol.html" class="m-link active" data-i18n="nav_team">Nasz zespół</a>
+  <a href="kontakt.html" class="m-link" data-i18n="nav_contact">Kontakt</a>
+  <div class="m-lang">
+    <button class="langbtn on" data-lang="pl">PL</button>
+    <span class="sep">|</span>
+    <button class="langbtn" data-lang="en">EN</button>
+  </div>
+</div>
+
+<div class="detail">
+  <div class="detail-img" role="img" aria-label="Dao"></div>
+
+  <div class="detail-body">
+    <div class="member-eyebrow" data-i18n="team_eyebrow">Nasz zespół</div>
+    <h1 data-i18n="member_name">Suttanuch</h1>
+    <div class="member-full" data-i18n="member_full">Dao</div>
+    <div class="detail-rule"></div>
+
+    <div class="spec-chips">
+      <span data-i18n="spec1">Masaż tajski</span>
+      <span data-i18n="spec2">Akupresura</span>
+      <span data-i18n="spec3">Terapia ucisku</span>
+    </div>
+
+    <div id="detail-desc"></div>
+
+    <div class="cert">
+      <div class="cert-cap" data-i18n="cert_cap">Certyfikaty</div>
+      <div class="cert-grid">
+        <a class="cert-frame" href="assets/cert-dao-thai.png" onclick="return openCert(event,this)">
+          <img src="assets/cert-dao-thai.png" alt="Certyfikat — Acupressure Technique Therapy" />
+        </a>
+        <a class="cert-frame" href="assets/cert-dao-facial.png" onclick="return openCert(event,this)">
+          <img src="assets/cert-dao-facial.png" alt="Certyfikat — Facial Spa" />
+        </a>
+        <a class="cert-frame" href="assets/cert-dao-foot.png" onclick="return openCert(event,this)">
+          <img src="assets/cert-dao-foot.png" alt="Certyfikat — Foot Massage for Health" />
+        </a>
+        <a class="cert-frame" href="assets/team-dao-cert2.jpg" onclick="return openCert(event,this)">
+          <img src="assets/team-dao-cert2.jpg" alt="Certyfikat — National Skill Standard" />
+        </a>
+        <a class="cert-frame" href="assets/team-dao-cert3.jpg" onclick="return openCert(event,this)">
+          <img src="assets/team-dao-cert3.jpg" alt="Certyfikat — Ministry of Public Health" />
+        </a>
+      </div>
+      <div class="cert-note" data-i18n="cert_note">Pani Spa Thai Massage School Lasalle, Bangkok · Acupressure Technique Therapy · 2025</div>
+    </div>
+  </div>
+</div>
+
+<div class="lightbox" id="lightbox" onclick="closeCert()">
+  <button class="lb-close" aria-label="Zamknij">&times;</button>
+  <img id="lightboxImg" src="assets/cert-dao-thai.png" alt="Certyfikat — Suttanuch Thunsiritada" />
+</div>
+
+<nav class="member-back">
+  <div class="ex-cap" data-i18n="back_cap">Poznaj nasz zespół</div>
+  <a class="ex-all" href="zespol.html" data-i18n="back_team">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+    <span data-i18n="back_team">Cały zespół</span>
+  </a>
+</nav>
+
+<footer>
+  <img class="f-logo" src="assets/logo.png" alt="" />
+  <div class="f-name">NIRVANA THAI MASSAGE DAY SPA</div>
+  <div class="f-sub" data-i18n="footer_sub">Bielsko-Biała · POLAND</div>
+</footer>
+
+<script>
+window.PAGE_I18N = {
+  pl:{
+    nav_team:"Nasz zespół",
+    team_eyebrow:"Nasz zespół",
+    member_name:"Suttanuch",
+    member_full:"Dao",
+    spec1:"Masaż tajski", spec2:"Akupresura", spec3:"Terapia ucisku",
+    cert_cap:"Certyfikaty",
+    cert_note:"Pani Spa Thai Massage School Lasalle, Bangkok · Acupressure Technique Therapy · 2025",
+    back_cap:"Poznaj nasz zespół",
+    back_team:"Cały zespół",
+    desc:[
+      {lead:true,t:"Suttanuch Thunsiritada — serdecznie nazywana przez nas Dao."},
+      {t:"Specjalizuje się w tradycyjnym masażu tajskim oraz technikach akupresury, w których precyzyjnym uciskiem punktów energetycznych przywraca równowagę ciała i przynosi ulgę w napięciach mięśniowych."},
+      {t:"Ukończyła szkolenie z zakresu Acupressure Technique Therapy w renomowanej szkole Pani Spa Thai Massage School Lasalle w Bangkoku. Swoją pracę traktuje jak pasję — masaż wykonuje z sercem, dbając o pełen komfort i głębokie odprężenie każdego gościa."}
+    ]
+  },
+  en:{
+    nav_team:"Our team",
+    team_eyebrow:"Our team",
+    member_name:"Suttanuch",
+    member_full:"Dao",
+    spec1:"Thai massage", spec2:"Acupressure", spec3:"Pressure therapy",
+    cert_cap:"Certificates",
+    cert_note:"Pani Spa Thai Massage School Lasalle, Bangkok · Acupressure Technique Therapy · 2025",
+    back_cap:"Meet our team",
+    back_team:"Whole team",
+    desc:[
+      {lead:true,t:"Suttanuch Thunsiritada — warmly called Dao by us."},
+      {t:"She specialises in traditional Thai massage and acupressure techniques, using precise pressure on energy points to restore the body's balance and relieve muscle tension."},
+      {t:"She completed training in Acupressure Technique Therapy at the renowned Pani Spa Thai Massage School Lasalle in Bangkok. She treats her work as a passion — giving every massage from the heart, ensuring the complete comfort and deep relaxation of each guest."}
+    ]
+  }
+};
+window.onLangChange = function(lang, dict){
+  const el = document.getElementById("detail-desc");
+  const arr = (dict && dict.desc) || [];
+  el.innerHTML = arr.map(function(o){
+    return '<p class="'+(o.lead?'lead':'')+'">'+o.t+'</p>';
+  }).join('');
+};
+function openCert(e, el){ e.preventDefault(); var src = el ? el.getAttribute('href') : 'assets/team-dao-cert.jpg'; document.getElementById('lightboxImg').src = src; document.getElementById('lightbox').classList.add('open'); return false; }
+function closeCert(){ document.getElementById('lightbox').classList.remove('open'); }
+document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeCert(); });
+</script>
+<script src="assets/nirvana-shared.js"></script>
+</body>
+</html>

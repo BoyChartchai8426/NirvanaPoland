@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Nasz zespół — Nirvana Thai Massage Day Spa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/nirvana-shared.css" />
+<style>
+  .page-wrap{ max-width:var(--maxw); margin:0 auto; padding:54px 24px 30px; }
+  .page-head{ text-align:center; margin-bottom:42px; }
+  .page-head .eyebrow{
+    font-family:"Jost",sans-serif; letter-spacing:.42em; text-transform:uppercase;
+    font-size:13px; color:var(--gold-bright); margin-bottom:12px;
+  }
+  .page-head h1{
+    font-family:"Cormorant Garamond",serif; font-weight:600;
+    font-size:clamp(34px,4.6vw,54px); margin:0; color:var(--cream);
+  }
+  .team-lead{ margin:18px auto 0; max-width:64ch; text-align:center; }
+  .team-lead p{ margin:0; color:var(--cream-dim); font-size:18px; line-height:1.74; text-wrap:pretty; }
+  .head-flourish{ width:64px;height:64px;margin:18px auto 0;opacity:.85; }
+
+  .team-grid{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,300px));
+    justify-content:center;
+    gap:30px;
+    padding-bottom:64px;
+  }
+  .team-card{
+    display:flex;flex-direction:column;
+    background:linear-gradient(180deg,#5d2207 0%, #4a1804 100%);
+    border:1px solid rgba(236,200,121,.28);
+    border-radius:12px;overflow:hidden;
+    text-decoration:none;color:inherit;
+    box-shadow:0 10px 26px rgba(20,8,2,.35);
+    transition:transform .28s ease, box-shadow .28s ease, border-color .28s ease;
+  }
+  .team-card.live:hover{
+    transform:translateY(-6px);
+    box-shadow:0 18px 40px rgba(20,8,2,.5);
+    border-color:var(--gold-bright);
+  }
+  .team-media{
+    position:relative; aspect-ratio:3/4; overflow:hidden;
+    background:#7d5a40;
+  }
+  .team-media img{ width:100%;height:100%;object-fit:cover;object-position:center 18%;display:block;
+    transition:transform .5s ease; }
+  .team-card.live:hover .team-media img{ transform:scale(1.05); }
+  .team-name{
+    position:absolute; left:0;right:0;bottom:0;
+    padding:16px;
+    background:linear-gradient(180deg, rgba(40,16,4,0) 0%, rgba(40,16,4,.82) 40%, rgba(40,16,4,.94) 100%);
+    text-align:center;
+  }
+  .team-name .nm{
+    color:var(--cream);
+    font-family:"Cormorant Garamond",serif; font-weight:600;
+    font-size:26px; line-height:1.1;
+    text-shadow:0 2px 8px rgba(0,0,0,.6);
+  }
+  .team-name .full{
+    font-family:"Cormorant Garamond",serif; font-style:italic;
+    color:var(--gold-bright); font-size:15px; margin-top:2px;
+  }
+  .team-foot{
+    display:flex; flex-direction:column; align-items:center; gap:14px;
+    padding:20px 18px 22px;
+    border-top:1px solid rgba(236,200,121,.16);
+    flex:1; justify-content:center;
+  }
+  .team-spec{
+    font-family:"Cormorant Garamond",serif; font-style:italic; color:var(--gold-bright);
+    font-size:19px; letter-spacing:.01em;
+    text-align:center; line-height:1.3;
+  }
+  .team-btn{
+    font-family:"Jost",sans-serif; font-weight:500; letter-spacing:.14em;
+    text-transform:uppercase; font-size:12.5px;
+    color:#5a2208;
+    background:linear-gradient(180deg,var(--gold-bright) 0%,var(--gold) 55%,var(--gold-deep) 100%);
+    padding:12px 22px; border-radius:30px; white-space:nowrap;
+    display:inline-flex;align-items:center;gap:8px;
+    box-shadow:0 4px 14px rgba(169,119,45,.4);
+    transition:filter .2s ease, transform .2s ease;
+  }
+  .team-card.live:hover .team-btn{ filter:brightness(1.06); transform:translateY(-1px); }
+  .team-btn svg{width:14px;height:14px;}
+
+  .team-card.soon{ opacity:.92; cursor:default; }
+  .team-media.empty{
+    display:flex;align-items:center;justify-content:center;
+    background:radial-gradient(120% 120% at 50% 0%, #6a3414 0%, #4a1804 80%);
+  }
+  .team-media.empty .ph-mark{ width:62px;height:62px;opacity:.5; }
+  .soon-tag{
+    font-family:"Jost",sans-serif; letter-spacing:.24em; text-transform:uppercase;
+    font-size:12px; color:var(--cream-faint);
+    border:1px dashed rgba(236,200,121,.4); border-radius:30px;
+    padding:9px 20px;
+  }
+
+  @media (max-width:1080px){ .team-grid{ grid-template-columns:repeat(2,minmax(0,280px)); gap:22px; } }
+  @media (max-width:560px){
+    .team-grid{ grid-template-columns:1fr; }
+    .page-wrap{ padding-top:34px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- sticky condensed header -->
+<div class="stickybar" id="stickybar">
+  <div class="inner">
+    <a class="s-brand" href="index.html#top">
+      <img src="assets/logo.png" alt="Nirvana Thai Massage Day Spa" />
+      <span>NIRVANA</span>
+    </a>
+    <nav class="menu">
+      <a href="index.html#about" data-i18n="nav_about">O nas</a>
+      <a href="Services.html" data-i18n="nav_services">Usługi</a>
+      <a href="bon.html" data-i18n="nav_voucher">Bon podarunkowy</a>
+      <a href="zespol.html" class="active" data-i18n="nav_team">Nasz zespół</a>
+      <a href="kontakt.html" data-i18n="nav_contact">Kontakt</a>
+    </nav>
+    <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</div>
+
+<!-- ===== Header ===== -->
+<header class="topbar" id="top">
+  <div class="brand">
+    <a class="brand-banner" href="index.html#top">
+      <img src="assets/banner-new.png" alt="Nirvana Thai Massage Day Spa" />
+    </a>
+  </div>
+
+  <div class="navwrap">
+    <nav class="menu">
+      <a href="index.html#about" data-i18n="nav_about">O nas</a>
+      <a href="Services.html" data-i18n="nav_services">Usługi</a>
+      <a href="bon.html" data-i18n="nav_voucher">Bon podarunkowy</a>
+      <a href="zespol.html" class="active" data-i18n="nav_team">Nasz zespół</a>
+      <a href="kontakt.html" data-i18n="nav_contact">Kontakt</a>
+    </nav>
+    <div class="lang">
+      <button class="langbtn on" data-lang="pl">PL</button>
+      <span class="sep">|</span>
+      <button class="langbtn" data-lang="en">EN</button>
+    </div>
+    <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+
+  <div class="gold-rule"></div>
+</header>
+
+<!-- ===== Mobile menu overlay ===== -->
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-close" id="mobileClose" aria-label="Zamknij">&times;</button>
+  <img class="m-logo" src="assets/logo.png" alt="" />
+  <a href="index.html#about" class="m-link" data-i18n="nav_about">O nas</a>
+  <a href="Services.html" class="m-link" data-i18n="nav_services">Usługi</a>
+  <a href="bon.html" class="m-link" data-i18n="nav_voucher">Bon podarunkowy</a>
+  <a href="zespol.html" class="m-link active" data-i18n="nav_team">Nasz zespół</a>
+  <a href="kontakt.html" class="m-link" data-i18n="nav_contact">Kontakt</a>
+  <div class="m-lang">
+    <button class="langbtn on" data-lang="pl">PL</button>
+    <span class="sep">|</span>
+    <button class="langbtn" data-lang="en">EN</button>
+  </div>
+</div>
+
+<!-- ===== Page content ===== -->
+<main class="page-wrap">
+  <div class="page-head">
+    <div class="eyebrow" data-i18n="team_eyebrow">Nasz zespół</div>
+    <h1 data-i18n="team_heading">Nasz zespół</h1>
+    <div class="team-lead">
+      <p data-i18n="team_lead">Poznaj naszych doświadczonych terapeutów, którzy z pasją i oddaniem dbają o Twoje ciało i umysł.</p>
+    </div>
+    <svg class="head-flourish" viewBox="0 0 120 120" aria-hidden="true"><use href="#kranok-corner"></use></svg>
+  </div>
+
+  <div class="team-grid">
+
+    <!-- Member 1 — Chua -->
+    <a class="team-card live" href="team-chua.html">
+      <div class="team-media">
+        <img src="assets/team-chua.jpg" alt="Chua" />
+        <div class="team-name">
+          <div class="nm" data-i18n="m1_name">Pinmaneerattana</div>
+        </div>
+      </div>
+      <div class="team-foot">
+        <div class="team-spec" data-i18n="m1_nick">Chua</div>
+        <span class="team-btn">
+          <span data-i18n="btn_profile">Zobacz profil</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </span>
+      </div>
+    </a>
+
+    <!-- Member 2 — Dao -->
+    <a class="team-card live" href="team-dao.html">
+      <div class="team-media">
+        <img src="assets/team-dao.jpg" alt="Dao" />
+        <div class="team-name">
+          <div class="nm" data-i18n="m2_name">Suttanuch</div>
+        </div>
+      </div>
+      <div class="team-foot">
+        <div class="team-spec" data-i18n="m2_nick">Dao</div>
+        <span class="team-btn">
+          <span data-i18n="btn_profile">Zobacz profil</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </span>
+      </div>
+    </a>
+
+  </div>
+</main>
+
+<footer>
+  <img class="f-logo" src="assets/logo.png" alt="" />
+  <div class="f-name">NIRVANA THAI MASSAGE DAY SPA</div>
+  <div class="f-sub" data-i18n="footer_sub">Bielsko-Biała · POLAND</div>
+</footer>
+
+<!-- shared kanok flourish defs -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <g id="kranok-flame">
+      <path d="M32 88 C 23 64 25 35 39 6 C 41 35 37 64 32 88 Z" fill="#d2a14e"/>
+      <path d="M36 13 C 30 40 31 64 32 84" fill="none" stroke="#8a5f24" stroke-width="1.6" stroke-linecap="round" opacity="0.75"/>
+    </g>
+    <g id="kranok-corner">
+      <use href="#kranok-flame" transform="translate(20,24) scale(0.95)"></use>
+      <use href="#kranok-flame" transform="translate(6,40) scale(0.6) rotate(-32 32 48)"></use>
+      <use href="#kranok-flame" transform="translate(40,40) scale(0.55) rotate(34 32 48)" opacity="0.85"></use>
+    </g>
+  </defs>
+</svg>
+
+<script>
+window.PAGE_I18N = {
+  pl:{
+    nav_team:"Nasz zespół",
+    team_eyebrow:"Nasz zespół",
+    team_heading:"Nasz zespół",
+    team_lead:"Poznaj naszych doświadczonych terapeutów, którzy z pasją i oddaniem dbają o Twoje ciało i umysł.",
+    btn_profile:"Zobacz profil",
+    soon:"Wkrótce",
+    m1_name:"Pinmaneerattana", m1_nick:"Chua",
+    m2_name:"Suttanuch", m2_nick:"Dao"
+  },
+  en:{
+    nav_team:"Our team",
+    team_eyebrow:"Our team",
+    team_heading:"Our team",
+    team_lead:"Meet our experienced therapists, who care for your body and mind with passion and dedication.",
+    btn_profile:"View profile",
+    soon:"Coming soon",
+    m1_name:"Pinmaneerattana", m1_nick:"Chua",
+    m2_name:"Suttanuch", m2_nick:"Dao"
+  }
+};
+</script>
+<script src="assets/nirvana-shared.js"></script>
+</body>
+</html>

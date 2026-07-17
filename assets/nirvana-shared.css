@@ -1,0 +1,174 @@
+/* ===========================================================
+   Nirvana Thai Massage — shared chrome (header / nav / footer)
+   Used by Services.html and service detail pages.
+   =========================================================== */
+:root{
+  --brown-deep:#4f1a05;
+  --brown:#7a2a0a;
+  --brown-soft:#8c3a16;
+  --brown-rule:#a85a2e;
+  --gold:#d2a14e;
+  --gold-bright:#ecc879;
+  --gold-deep:#a9772d;
+  --cream:#f4e7cd;
+  --cream-dim:rgba(244,231,205,.80);
+  --cream-faint:rgba(244,231,205,.55);
+  --maxw:1280px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--brown);
+  color:var(--cream);
+  font-family:"EB Garamond",Georgia,serif;
+  font-size:18px;
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+}
+img{display:block;max-width:100%;}
+a{color:inherit;}
+
+/* ---------- Full top header (banner + nav) ---------- */
+.topbar{
+  position:relative;
+  background:radial-gradient(120% 140% at 50% -10%, #93431b 0%, var(--brown) 46%, var(--brown-deep) 130%);
+  padding:30px 24px 0;
+  z-index:20;
+}
+.brand{display:flex;flex-direction:column;align-items:center;gap:14px;}
+.brand-banner{display:block;width:100%;text-align:center;text-decoration:none;line-height:0;}
+.brand-banner img{
+  display:inline-block;width:auto;max-width:min(390px,90%);height:auto;
+  border-radius:12px;box-shadow:0 8px 22px rgba(0,0,0,.38);
+  border:1px solid rgba(236,200,121,.45);
+}
+
+/* ---------- Nav pills ---------- */
+.navwrap{
+  max-width:var(--maxw);margin:26px auto 0;
+  display:flex;align-items:center;justify-content:center;gap:10px;position:relative;
+}
+nav.menu{
+  display:flex;align-items:stretch;gap:0;
+  background:rgba(244,231,205,.10);
+  border:1px solid rgba(244,231,205,.16);
+  border-radius:4px;overflow:hidden;backdrop-filter:blur(2px);
+}
+nav.menu a{
+  font-family:"Jost",sans-serif;font-weight:400;letter-spacing:.11em;
+  text-transform:uppercase;font-size:13.5px;color:var(--cream-dim);
+  text-decoration:none;padding:15px 19px;white-space:nowrap;
+  border-right:1px solid rgba(244,231,205,.12);
+  transition:background .25s ease,color .25s ease;
+}
+nav.menu a:last-child{border-right:none;}
+nav.menu a:hover{color:var(--cream);background:rgba(244,231,205,.07);}
+nav.menu a.active{
+  background:linear-gradient(180deg,var(--gold-bright) 0%,var(--gold) 55%,var(--gold-deep) 100%);
+  color:#5a2208;font-weight:600;text-shadow:0 1px 0 rgba(255,255,255,.25);
+}
+.lang{
+  position:absolute;right:0;display:flex;align-items:center;gap:2px;
+  font-family:"Jost",sans-serif;font-size:13px;letter-spacing:.12em;
+}
+.lang button{
+  background:none;border:none;cursor:pointer;color:var(--cream-faint);
+  font:inherit;padding:6px 9px;letter-spacing:.12em;border-radius:3px;
+  transition:color .2s ease;
+}
+.lang button:hover{color:var(--cream);}
+.lang button.on{color:var(--gold-bright);font-weight:600;}
+.lang .sep{color:rgba(244,231,205,.3);}
+
+/* unified PL/EN toggle (plain text like the home page) — applies in every
+   header context: home-style .lang, detail-header .dh-lang, mobile .m-lang */
+.langbtn{
+  background:none;border:none;cursor:pointer;color:var(--cream-faint);
+  font-family:"Jost",sans-serif;font-size:13px;letter-spacing:.12em;
+  padding:6px 9px;border-radius:3px;transition:color .2s ease;
+}
+.langbtn:hover{color:var(--cream);}
+.langbtn.on{color:var(--gold-bright);font-weight:600;}
+.dh-lang .sep,.m-lang .sep{color:rgba(244,231,205,.3);}
+
+.gold-rule{
+  height:3px;margin-top:24px;
+  background:linear-gradient(90deg,transparent 0%, var(--gold-deep) 8%, var(--gold-bright) 50%, var(--gold-deep) 92%, transparent 100%);
+  box-shadow:0 1px 6px rgba(236,200,121,.3);
+}
+
+/* ---------- Sticky condensed bar ---------- */
+.stickybar{
+  position:fixed;top:0;left:0;right:0;z-index:40;
+  background:linear-gradient(180deg,var(--brown) 0%, #732809 100%);
+  border-bottom:2px solid var(--gold);
+  transform:translateY(-100%);
+  transition:transform .4s cubic-bezier(.22,.61,.36,1);
+  padding:0 24px;
+}
+.stickybar.show{transform:translateY(0);}
+.stickybar .inner{
+  max-width:var(--maxw);margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;height:64px;gap:18px;
+}
+.stickybar .s-brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--gold-bright);}
+.stickybar .s-brand img{width:42px;height:42px;}
+.stickybar .s-brand span{font-family:"Cinzel","Cormorant Garamond",serif;font-weight:700;letter-spacing:.12em;font-size:17px;}
+.stickybar nav.menu{background:rgba(244,231,205,.08);}
+.stickybar nav.menu a{padding:11px 15px;font-size:12px;letter-spacing:.1em;}
+
+/* ---------- Footer ---------- */
+footer{
+  background:var(--brown-deep);border-top:2px solid var(--gold-deep);
+  padding:40px 24px;text-align:center;
+}
+footer .f-logo{width:56px;height:56px;margin:0 auto 14px;opacity:.95;}
+footer .f-name{font-family:"Cinzel","Cormorant Garamond",serif;letter-spacing:.16em;color:var(--gold-bright);font-size:16px;}
+footer .f-sub{font-family:"Jost",sans-serif;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--cream-faint);margin-top:8px;}
+
+[data-i18n]{transition:opacity .18s ease;}
+
+/* ---------- Mobile hamburger + overlay ---------- */
+.burger{
+  display:none;flex-direction:column;justify-content:center;gap:5px;
+  width:48px;height:44px;padding:0 11px;
+  background:rgba(244,231,205,.10);border:1px solid rgba(244,231,205,.22);
+  border-radius:9px;cursor:pointer;
+}
+.burger span{display:block;height:2.5px;width:100%;background:var(--gold-bright);border-radius:2px;}
+.navwrap .burger{margin-top:4px;}
+.mobile-nav{
+  position:fixed;inset:0;z-index:120;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;
+  background:linear-gradient(180deg,#5a1e07 0%, #3c1404 100%);
+  transform:translateY(-100%);
+  transition:transform .38s cubic-bezier(.22,.61,.36,1);
+  visibility:hidden;
+}
+.mobile-nav.open{transform:translateY(0);visibility:visible;}
+.mobile-nav .m-logo{width:74px;height:74px;margin-bottom:18px;opacity:.95;}
+.mobile-nav a.m-link{
+  font-family:"Jost",sans-serif;text-transform:uppercase;letter-spacing:.2em;
+  font-size:20px;color:var(--cream);text-decoration:none;
+  padding:15px 26px;border-radius:6px;transition:color .2s ease,background .2s ease;
+}
+.mobile-nav a.m-link:hover,.mobile-nav a.m-link.active{color:var(--gold-bright);}
+.mobile-nav a.m-link.active{background:rgba(236,200,121,.12);}
+.mobile-close{
+  position:absolute;top:18px;right:22px;width:48px;height:48px;line-height:1;
+  font-size:38px;color:var(--gold-bright);background:none;border:none;cursor:pointer;
+}
+.m-lang{margin-top:28px;display:flex;align-items:center;gap:8px;font-family:"Jost",sans-serif;letter-spacing:.12em;}
+.m-lang .sep{color:rgba(244,231,205,.35);}
+
+@media (max-width:880px){
+  .navwrap{flex-direction:column;margin-top:16px;gap:14px;}
+  .navwrap nav.menu{display:flex;flex-direction:column;gap:8px;width:100%;background:transparent;border:none;border-radius:0;backdrop-filter:none;}
+  .navwrap nav.menu a{width:100%;text-align:center;justify-content:center;border:1px solid rgba(244,231,205,.22);border-radius:9px;padding:14px 12px;font-size:14px;letter-spacing:.14em;}
+  .navwrap .lang{display:flex;position:static;margin:0;}
+  .navwrap .burger{display:none;}
+  .stickybar nav.menu{display:none;}
+  .stickybar .burger{display:flex;}
+}
+@media (min-width:881px){ .mobile-nav{display:none;} }

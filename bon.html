@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Bon podarunkowy — Nirvana Thai Massage Day Spa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/nirvana-shared.css" />
+<style>
+  .bon-intro{
+    max-width:var(--maxw); margin:0 auto;
+    padding:58px 24px 30px;
+    display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);
+    gap:clamp(30px,5vw,68px); align-items:center;
+  }
+  .voucher-frame{ position:relative; }
+  .voucher-frame img{
+    width:100%; border-radius:10px;
+    box-shadow:0 24px 52px rgba(20,8,2,.55);
+    border:3px solid var(--gold);
+    transition:transform .4s ease;
+  }
+  .voucher-frame:hover img{ transform:scale(1.01); }
+  .voucher-frame::before{
+    content:""; position:absolute; inset:-14px -14px auto auto;
+    width:84px; height:84px; opacity:.5; z-index:-1;
+  }
+  .voucher-cap{
+    text-align:center; margin-top:20px;
+    font-family:"Jost",sans-serif; letter-spacing:.24em; text-transform:uppercase;
+    font-size:12px; color:var(--cream-faint);
+  }
+
+  .bon-text .eyebrow{
+    font-family:"Jost",sans-serif; letter-spacing:.4em; text-transform:uppercase;
+    font-size:13px; color:var(--gold-bright); margin-bottom:14px;
+  }
+  .bon-text h1{
+    font-family:"Cormorant Garamond",serif; font-weight:600;
+    font-size:clamp(36px,4.8vw,56px); line-height:1.04; margin:0 0 8px; color:var(--cream);
+  }
+  .title-rule{
+    width:120px;height:2px;
+    background:linear-gradient(90deg,var(--gold-bright),rgba(210,161,78,0));
+    margin:0 0 26px;
+  }
+  .bon-text .lead{
+    font-family:"Cormorant Garamond",serif; font-style:italic; font-weight:500;
+    font-size:clamp(24px,3vw,32px); color:var(--gold-bright);
+    margin:0 0 20px; line-height:1.2;
+  }
+  .bon-text p{ margin:0 0 18px; color:var(--cream-dim); max-width:60ch; text-wrap:pretty; }
+  .bon-cta{
+    display:inline-flex; align-items:center; gap:10px; margin-top:12px;
+    font-family:"Jost",sans-serif; font-weight:500; letter-spacing:.16em; text-transform:uppercase; font-size:13px;
+    color:#5a2208; text-decoration:none;
+    background:linear-gradient(180deg,var(--gold-bright) 0%,var(--gold) 55%,var(--gold-deep) 100%);
+    padding:15px 30px; border-radius:32px; white-space:nowrap;
+    box-shadow:0 6px 18px rgba(169,119,45,.42);
+    transition:filter .2s ease, transform .2s ease;
+  }
+  .bon-cta:hover{ filter:brightness(1.06); transform:translateY(-2px); }
+  .bon-cta svg{ width:16px; height:16px; }
+
+  /* ---------- Terms ---------- */
+  .bon-terms{
+    background:linear-gradient(180deg,#5d2207 0%, #4a1804 100%);
+    border-top:2px solid var(--gold-deep);
+    padding:56px 24px 72px; margin-top:42px;
+  }
+  .bon-terms .inner{ max-width:var(--maxw); margin:0 auto; }
+  .terms-head{ text-align:center; margin-bottom:10px; }
+  .terms-head .eyebrow{
+    font-family:"Jost",sans-serif; letter-spacing:.36em; text-transform:uppercase;
+    font-size:12px; color:var(--gold-bright); margin-bottom:10px;
+  }
+  .terms-head h2{
+    font-family:"Cormorant Garamond",serif; font-weight:600;
+    font-size:clamp(28px,3.6vw,42px); margin:0; color:var(--cream);
+  }
+  .head-flourish{ width:58px;height:58px;margin:16px auto 6px;opacity:.85; }
+  .rules{
+    list-style:none; counter-reset:r; padding:0;
+    margin:30px auto 0; max-width:1080px;
+    display:grid; grid-template-columns:1fr 1fr; gap:6px 44px;
+  }
+  .rules li{
+    counter-increment:r; position:relative;
+    padding:15px 6px 15px 54px;
+    border-bottom:1px solid rgba(236,200,121,.16);
+    color:var(--cream-dim); font-size:16.5px; line-height:1.6;
+  }
+  .rules li::before{
+    content:counter(r); position:absolute; left:0; top:13px;
+    width:34px; height:34px; display:flex; align-items:center; justify-content:center;
+    font-family:"Cormorant Garamond",serif; font-weight:700; font-size:17px; color:#5a2208;
+    background:linear-gradient(180deg,var(--gold-bright),var(--gold) 60%,var(--gold-deep));
+    border-radius:50%; box-shadow:0 3px 10px rgba(169,119,45,.4);
+  }
+
+  @media (max-width:900px){
+    .bon-intro{ grid-template-columns:1fr; gap:30px; padding-top:40px; }
+    .voucher-frame{ max-width:520px; margin:0 auto; }
+    .bon-text{ text-align:center; }
+    .bon-text .lead, .bon-text p{ margin-left:auto; margin-right:auto; }
+    .title-rule{ margin-left:auto; margin-right:auto; }
+    .rules{ grid-template-columns:1fr; gap:2px; max-width:620px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- sticky condensed header -->
+<div class="stickybar" id="stickybar">
+  <div class="inner">
+    <a class="s-brand" href="index.html#top">
+      <img src="assets/logo.png" alt="Nirvana Thai Massage Day Spa" />
+      <span>NIRVANA</span>
+    </a>
+    <nav class="menu">
+      <a href="index.html#about" data-i18n="nav_about">O nas</a>
+      <a href="Services.html" data-i18n="nav_services">Usługi</a>
+      <a href="bon.html" class="active" data-i18n="nav_voucher">Bon podarunkowy</a>
+      <a href="zespol.html" data-i18n="nav_team">Nasz zespół</a>
+      <a href="kontakt.html" data-i18n="nav_contact">Kontakt</a>
+    </nav>
+    <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</div>
+
+<!-- ===== Header ===== -->
+<header class="topbar" id="top">
+  <div class="brand">
+    <a class="brand-banner" href="index.html#top">
+      <img src="assets/banner-new.png" alt="Nirvana Thai Massage Day Spa" />
+    </a>
+  </div>
+
+  <div class="navwrap">
+    <nav class="menu">
+      <a href="index.html#about" data-i18n="nav_about">O nas</a>
+      <a href="Services.html" data-i18n="nav_services">Usługi</a>
+      <a href="bon.html" class="active" data-i18n="nav_voucher">Bon podarunkowy</a>
+      <a href="zespol.html" data-i18n="nav_team">Nasz zespół</a>
+      <a href="kontakt.html" data-i18n="nav_contact">Kontakt</a>
+    </nav>
+    <div class="lang">
+      <button class="langbtn on" data-lang="pl">PL</button>
+      <span class="sep">|</span>
+      <button class="langbtn" data-lang="en">EN</button>
+    </div>
+    <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+
+  <div class="gold-rule"></div>
+</header>
+
+<!-- ===== Mobile menu overlay ===== -->
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-close" id="mobileClose" aria-label="Zamknij">&times;</button>
+  <img class="m-logo" src="assets/logo.png" alt="" />
+  <a href="index.html#about" class="m-link" data-i18n="nav_about">O nas</a>
+  <a href="Services.html" class="m-link" data-i18n="nav_services">Usługi</a>
+  <a href="bon.html" class="m-link active" data-i18n="nav_voucher">Bon podarunkowy</a>
+  <a href="zespol.html" class="m-link" data-i18n="nav_team">Nasz zespół</a>
+  <a href="kontakt.html" class="m-link" data-i18n="nav_contact">Kontakt</a>
+  <div class="m-lang">
+    <button class="langbtn on" data-lang="pl">PL</button>
+    <span class="sep">|</span>
+    <button class="langbtn" data-lang="en">EN</button>
+  </div>
+</div>
+
+<!-- ===== Intro ===== -->
+<section class="bon-intro">
+  <div class="voucher-frame">
+    <svg class="voucher-corner" viewBox="0 0 120 120" aria-hidden="true" style="position:absolute;width:84px;height:84px;top:-22px;left:-22px;opacity:.45;"><use href="#kranok-corner"></use></svg>
+    <img src="assets/bon.jpg" alt="Bon podarunkowy Nirvana Thai Massage Day Spa" />
+    <div class="voucher-cap" data-i18n="voucher_cap">Przykładowy bon podarunkowy</div>
+  </div>
+
+  <div class="bon-text">
+    <div class="eyebrow" data-i18n="eyebrow">Pomysł na wyjątkowy prezent</div>
+    <h1 data-i18n="heading">Bon podarunkowy</h1>
+    <div class="title-rule"></div>
+    <p class="lead" data-i18n="lead">Szukasz wyjątkowego prezentu?</p>
+    <div id="bon-intro-body"></div>
+    <a class="bon-cta" href="kontakt.html" data-i18n="cta">Zamów bon podarunkowy
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ===== Terms ===== -->
+<section class="bon-terms">
+  <div class="inner">
+    <div class="terms-head">
+      <div class="eyebrow" data-i18n="terms_eyebrow">Dobrze wiedzieć</div>
+      <h2 data-i18n="terms_head">Regulamin i informacje dodatkowe</h2>
+      <svg class="head-flourish" viewBox="0 0 120 120" aria-hidden="true"><use href="#kranok-corner"></use></svg>
+    </div>
+    <ol class="rules" id="bon-rules"></ol>
+  </div>
+</section>
+
+<footer>
+  <img class="f-logo" src="assets/logo.png" alt="" />
+  <div class="f-name">NIRVANA THAI MASSAGE DAY SPA</div>
+  <div class="f-sub" data-i18n="footer_sub">Bielsko-Biała · POLAND</div>
+</footer>
+
+<!-- shared kanok flourish defs -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <g id="kranok-flame">
+      <path d="M32 88 C 23 64 25 35 39 6 C 41 35 37 64 32 88 Z" fill="#d2a14e"/>
+      <path d="M36 13 C 30 40 31 64 32 84" fill="none" stroke="#8a5f24" stroke-width="1.6" stroke-linecap="round" opacity="0.75"/>
+    </g>
+    <g id="kranok-corner">
+      <use href="#kranok-flame" transform="translate(20,24) scale(0.95)"></use>
+      <use href="#kranok-flame" transform="translate(6,40) scale(0.6) rotate(-32 32 48)"></use>
+      <use href="#kranok-flame" transform="translate(40,40) scale(0.55) rotate(34 32 48)" opacity="0.85"></use>
+    </g>
+  </defs>
+</svg>
+
+<script>
+window.PAGE_I18N = {
+  pl:{
+    nav_voucher:"Bon podarunkowy",
+    eyebrow:"Pomysł na wyjątkowy prezent",
+    heading:"Bon podarunkowy",
+    voucher_cap:"Przykładowy bon podarunkowy",
+    lead:"Szukasz wyjątkowego prezentu?",
+    cta:"Zamów bon podarunkowy",
+    terms_eyebrow:"Dobrze wiedzieć",
+    terms_head:"Regulamin i informacje dodatkowe",
+    intro:[
+      "Proponujemy Państwu bon podarunkowy, który jest fantastycznym pomysłem na ciekawy prezent i oryginalny sposób, aby podarować bliskiej osobie wyjątkowe chwile relaksu w Nirvana Thai Massage Day Spa.",
+      "Bon Podarunkowy jest indywidualnie dostosowany do Państwa potrzeb – może być wystawiony na wybrany zabieg lub masaż albo na pakiet zabiegów."
+    ],
+    rules:[
+      "W przypadku realizacji Bonu Upominkowego prosimy, aby w trakcie dokonywania rezerwacji poinformować o posiadaniu vouchera.",
+      "Zaproszenie należy okazać w recepcji Spa przed skorzystaniem z zabiegów.",
+      "Płatności voucherem nie można łączyć z promocjami i rabatami.",
+      "Bon Upominkowy nie może być wymieniony na ekwiwalent pieniężny.",
+      "Niewykorzystana kwota Bonu nie jest zwracana.",
+      "Jeśli kwota usługi jest wyższa niż wartość Bonu, Klient będzie proszony o dopłatę różnicy.",
+      "Bon podarunkowy jest ważny przez okres 2 miesięcy od daty jego zakupu – w tym czasie należy wykorzystać wykupione zabiegi. Po upływie terminu traci ważność.",
+      "Bon można wykorzystać podczas jednej lub kilku wizyt, w zależności od wykupionych usług.",
+      "Odwołanie umówionej wizyty musi nastąpić na 24 h przed jej terminem, drogą telefoniczną lub osobiście. W przypadku nieodwołania wizyty przepada kwota przeznaczona na umówiony zabieg.",
+      "Istnieje możliwość wykupienia Bonu poprzez wpłatę przelewem – wówczas w momencie zaksięgowania przelewu wysyłamy Bon na podany adres e-mail."
+    ]
+  },
+  en:{
+    nav_voucher:"Gift voucher",
+    eyebrow:"An idea for an exceptional gift",
+    heading:"Gift voucher",
+    voucher_cap:"Sample gift voucher",
+    lead:"Looking for an exceptional gift?",
+    cta:"Order a gift voucher",
+    terms_eyebrow:"Good to know",
+    terms_head:"Terms & additional information",
+    intro:[
+      "We offer you a gift voucher – a wonderful idea for an original present and a special way to give a loved one exceptional moments of relaxation at Nirvana Thai Massage Day Spa.",
+      "The Gift Voucher is tailored individually to your needs – it can be issued for a selected treatment or massage, or for a package of treatments."
+    ],
+    rules:[
+      "When redeeming the Gift Voucher, please inform us that you hold a voucher while making your reservation.",
+      "The voucher must be presented at the Spa reception before using the treatments.",
+      "Payment by voucher cannot be combined with promotions and discounts.",
+      "The Gift Voucher cannot be exchanged for a cash equivalent.",
+      "Any unused amount of the voucher is not refunded.",
+      "If the price of the service is higher than the value of the voucher, the Client will be asked to pay the difference.",
+      "The gift voucher is valid for 2 months from the date of purchase – the purchased treatments must be used within this period. After this date it expires.",
+      "The voucher can be used during one or several visits, depending on the services purchased.",
+      "Cancellation of a booked appointment must be made 24 h before its scheduled time, by phone or in person. If the appointment is not cancelled, the amount allocated for the booked treatment is forfeited.",
+      "It is possible to purchase the voucher by bank transfer – once the transfer is credited, we send the voucher to the provided e-mail address."
+    ]
+  }
+};
+
+window.onLangChange = function(lang, dict){
+  const intro = document.getElementById("bon-intro-body");
+  intro.innerHTML = (dict.intro || []).map(t => "<p>"+t+"</p>").join("");
+  const rules = document.getElementById("bon-rules");
+  rules.innerHTML = (dict.rules || []).map(t => "<li>"+t+"</li>").join("");
+};
+</script>
+<script src="assets/nirvana-shared.js"></script>
+</body>
+</html>

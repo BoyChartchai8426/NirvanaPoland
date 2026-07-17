@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kontakt — Nirvana Thai Massage Day Spa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/nirvana-shared.css" />
+<style>
+  .contact-wrap{ max-width:var(--maxw); margin:0 auto; padding:58px 24px 20px; }
+  .page-head{ text-align:center; margin-bottom:40px; }
+  .page-head .eyebrow{
+    font-family:"Jost",sans-serif; letter-spacing:.42em; text-transform:uppercase;
+    font-size:13px; color:var(--gold-bright); margin-bottom:12px;
+  }
+  .page-head h1{
+    font-family:"Cormorant Garamond",serif; font-weight:600;
+    font-size:clamp(34px,4.6vw,54px); margin:0; color:var(--cream);
+  }
+  .head-flourish{ width:60px;height:60px;margin:16px auto 0;opacity:.85; }
+
+  .contact-card{
+    max-width:760px; margin:0 auto;
+    background:linear-gradient(180deg,#5d2207 0%, #4a1804 100%);
+    border:1px solid rgba(236,200,121,.28); border-radius:16px;
+    box-shadow:0 18px 44px rgba(20,8,2,.4);
+    padding:clamp(30px,4vw,52px) clamp(24px,4vw,56px) 44px;
+    text-align:center;
+  }
+  .salon-name{
+    font-family:"Cinzel","Cormorant Garamond",serif; font-weight:700;
+    letter-spacing:.12em; font-size:clamp(20px,2.6vw,27px);
+    color:var(--gold-bright); line-height:1.3; margin-bottom:6px;
+  }
+  .salon-sub{
+    font-family:"Jost",sans-serif; letter-spacing:.26em; text-transform:uppercase;
+    font-size:12px; color:var(--cream-faint); margin-bottom:30px;
+  }
+  .c-rows{ display:flex; flex-direction:column; gap:2px; text-align:left; }
+  .c-row{
+    display:grid; grid-template-columns:54px 1fr; align-items:center; gap:6px;
+    padding:18px 4px; border-top:1px solid rgba(236,200,121,.14);
+  }
+  .c-row:first-child{ border-top:none; }
+  .c-ico{
+    width:42px; height:42px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    background:radial-gradient(circle at 50% 35%, #6a3414, #3c1404);
+    border:1px solid rgba(236,200,121,.4);
+  }
+  .c-ico svg{ width:20px; height:20px; stroke:var(--gold-bright); fill:none; stroke-width:1.8; }
+  .c-body{ display:block; }
+  .c-body .c-label{
+    display:block;
+    font-family:"Jost",sans-serif; letter-spacing:.2em; text-transform:uppercase;
+    font-size:11px; color:var(--gold-bright); margin-bottom:4px;
+  }
+  .c-body .c-val{
+    display:block;
+    font-family:"Cormorant Garamond",serif; font-size:23px; color:var(--cream); line-height:1.25;
+  }
+  .c-body a.c-val{ text-decoration:none; transition:color .2s ease; }
+  .c-body a.c-val:hover{ color:var(--gold-bright); text-decoration:underline; }
+  .c-val.soon{ color:var(--cream-faint); font-style:italic; font-size:20px; }
+
+  .contact-cta{
+    display:inline-flex; align-items:center; gap:10px; margin-top:32px;
+    font-family:"Jost",sans-serif; font-weight:500; letter-spacing:.14em; text-transform:uppercase; font-size:13px;
+    color:#5a2208; text-decoration:none;
+    background:linear-gradient(180deg,var(--gold-bright) 0%,var(--gold) 55%,var(--gold-deep) 100%);
+    padding:15px 32px; border-radius:32px; white-space:nowrap;
+    box-shadow:0 6px 18px rgba(169,119,45,.42);
+    transition:filter .2s ease, transform .2s ease;
+  }
+  .contact-cta:hover{ filter:brightness(1.06); transform:translateY(-2px); }
+  .contact-cta svg{ width:17px; height:17px; stroke:currentColor; fill:none; stroke-width:2; }
+
+  @media (max-width:520px){
+    .c-row{ grid-template-columns:46px 1fr; }
+    .c-body .c-val{ font-size:20px; }
+    .c-val.soon{ font-size:18px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- sticky condensed header -->
+<div class="stickybar" id="stickybar">
+  <div class="inner">
+    <a class="s-brand" href="index.html#top">
+      <img src="assets/logo.png" alt="Nirvana Thai Massage Day Spa" />
+      <span>NIRVANA</span>
+    </a>
+    <nav class="menu">
+      <a href="index.html#about" data-i18n="nav_about">O nas</a>
+      <a href="Services.html" data-i18n="nav_services">Usługi</a>
+      <a href="bon.html" data-i18n="nav_voucher">Bon podarunkowy</a>
+      <a href="zespol.html" data-i18n="nav_team">Nasz zespół</a>
+      <a href="kontakt.html" class="active" data-i18n="nav_contact">Kontakt</a>
+    </nav>
+    <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</div>
+
+<!-- ===== Header ===== -->
+<header class="topbar" id="top">
+  <div class="brand">
+    <a class="brand-banner" href="index.html#top">
+      <img src="assets/banner-new.png" alt="Nirvana Thai Massage Day Spa" />
+    </a>
+  </div>
+
+  <div class="navwrap">
+    <nav class="menu">
+      <a href="index.html#about" data-i18n="nav_about">O nas</a>
+      <a href="Services.html" data-i18n="nav_services">Usługi</a>
+      <a href="bon.html" data-i18n="nav_voucher">Bon podarunkowy</a>
+      <a href="zespol.html" data-i18n="nav_team">Nasz zespół</a>
+      <a href="kontakt.html" class="active" data-i18n="nav_contact">Kontakt</a>
+    </nav>
+    <div class="lang">
+      <button class="langbtn on" data-lang="pl">PL</button>
+      <span class="sep">|</span>
+      <button class="langbtn" data-lang="en">EN</button>
+    </div>
+    <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+
+  <div class="gold-rule"></div>
+</header>
+
+<!-- ===== Mobile menu overlay ===== -->
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-close" id="mobileClose" aria-label="Zamknij">&times;</button>
+  <img class="m-logo" src="assets/logo.png" alt="" />
+  <a href="index.html#about" class="m-link" data-i18n="nav_about">O nas</a>
+  <a href="Services.html" class="m-link" data-i18n="nav_services">Usługi</a>
+  <a href="bon.html" class="m-link" data-i18n="nav_voucher">Bon podarunkowy</a>
+  <a href="zespol.html" class="m-link" data-i18n="nav_team">Nasz zespół</a>
+  <a href="kontakt.html" class="m-link active" data-i18n="nav_contact">Kontakt</a>
+  <div class="m-lang">
+    <button class="langbtn on" data-lang="pl">PL</button>
+    <span class="sep">|</span>
+    <button class="langbtn" data-lang="en">EN</button>
+  </div>
+</div>
+
+<!-- ===== Contact ===== -->
+<section class="contact-wrap">
+  <div class="page-head">
+    <div class="eyebrow" data-i18n="c_eyebrow">Skontaktuj się z nami</div>
+    <h1 data-i18n="nav_contact">Kontakt</h1>
+    <svg class="head-flourish" viewBox="0 0 120 120" aria-hidden="true"><use href="#kranok-corner"></use></svg>
+  </div>
+
+  <div class="contact-card">
+    <div class="salon-name">NIRVANA THAI MASSAGE DAY SPA</div>
+    <div class="salon-sub" data-i18n="c_sub">Oryginalny masaż tajski</div>
+
+    <div class="c-rows">
+      <div class="c-row">
+        <span class="c-ico">
+          <svg viewBox="0 0 24 24"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11Z" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.6"/></svg>
+        </span>
+        <span class="c-body">
+          <span class="c-label" data-i18n="c_addr">Adres</span>
+          <span class="c-val" data-i18n="c_addr_val">ul. Leszczyńska 63, Bielsko-Biała</span>
+        </span>
+      </div>
+
+      <div class="c-row">
+        <span class="c-ico">
+          <svg viewBox="0 0 24 24"><path d="M5 4h3l2 5-2.5 1.5a11 11 0 0 0 5 5L19 13l2 5v3a1 1 0 0 1-1 1A16 16 0 0 1 4 6a1 1 0 0 1 1-2Z" stroke-linejoin="round"/></svg>
+        </span>
+        <span class="c-body">
+          <span class="c-label" data-i18n="c_phone">Telefon</span>
+          <a class="c-val" href="tel:+48577270888">+48 577 270 888</a>
+        </span>
+      </div>
+
+      <div class="c-row">
+        <span class="c-ico">
+          <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6 8.5-6" stroke-linejoin="round"/></svg>
+        </span>
+        <span class="c-body">
+          <span class="c-label" data-i18n="c_email">E-mail</span>
+          <span class="c-val" data-i18n="c_email_val">poczta@naturanga.pl</span>
+        </span>
+      </div>
+
+      <div class="c-row">
+        <span class="c-ico">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <span class="c-body">
+          <span class="c-label" data-i18n="c_hours">Godziny otwarcia</span>
+          <span class="c-val" data-i18n="c_hours_val">Poniedziałek–Sobota: 11:00–21:00</span>
+        </span>
+      </div>
+    </div>
+
+    <a class="contact-cta" href="tel:+48577270888">
+      <svg viewBox="0 0 24 24"><path d="M5 4h3l2 5-2.5 1.5a11 11 0 0 0 5 5L19 13l2 5v3a1 1 0 0 1-1 1A16 16 0 0 1 4 6a1 1 0 0 1 1-2Z" stroke-linejoin="round"/></svg>
+      <span data-i18n="c_call">Zadzwoń teraz</span>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <img class="f-logo" src="assets/logo.png" alt="" />
+  <div class="f-name">NIRVANA THAI MASSAGE DAY SPA</div>
+  <div class="f-sub" data-i18n="footer_sub">Bielsko-Biała · POLAND</div>
+</footer>
+
+<!-- shared kanok flourish defs -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <g id="kranok-flame">
+      <path d="M32 88 C 23 64 25 35 39 6 C 41 35 37 64 32 88 Z" fill="#d2a14e"/>
+      <path d="M36 13 C 30 40 31 64 32 84" fill="none" stroke="#8a5f24" stroke-width="1.6" stroke-linecap="round" opacity="0.75"/>
+    </g>
+    <g id="kranok-corner">
+      <use href="#kranok-flame" transform="translate(20,24) scale(0.95)"></use>
+      <use href="#kranok-flame" transform="translate(6,40) scale(0.6) rotate(-32 32 48)"></use>
+      <use href="#kranok-flame" transform="translate(40,40) scale(0.55) rotate(34 32 48)" opacity="0.85"></use>
+    </g>
+  </defs>
+</svg>
+
+<script>
+window.PAGE_I18N = {
+  pl:{
+    nav_contact:"Kontakt",
+    c_eyebrow:"Skontaktuj się z nami",
+    c_sub:"Oryginalny masaż tajski",
+    c_addr:"Adres", c_phone:"Telefon", c_email:"E-mail", c_hours:"Godziny otwarcia",
+    c_addr_val:"ul. Leszczyńska 63, Bielsko-Biała", c_hours_val:"Poniedziałek–Sobota: 11:00–21:00",
+    c_email_val:"poczta@naturanga.pl",
+    c_soon:"Wkrótce…", c_call:"Zadzwoń teraz"
+  },
+  en:{
+    nav_contact:"Contact",
+    c_eyebrow:"Get in touch with us",
+    c_sub:"Authentic Thai massage",
+    c_addr:"Address", c_phone:"Phone", c_email:"E-mail", c_hours:"Opening hours",
+    c_addr_val:"ul. Leszczyńska 63, Bielsko-Biała", c_hours_val:"Monday–Saturday: 11:00–21:00",
+    c_email_val:"poczta@naturanga.pl",
+    c_soon:"Coming soon…", c_call:"Call now"
+  }
+};
+</script>
+<script src="assets/nirvana-shared.js"></script>
+</body>
+</html>
